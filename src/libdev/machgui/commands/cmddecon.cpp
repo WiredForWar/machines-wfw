@@ -25,6 +25,7 @@
 #include "machlog/squad.hpp"
 #include "machlog/stats.hpp"
 
+#include "machgui/IInputRegistry.hpp"
 #include "machgui/internal/strings.hpp"
 #include "machgui/internal/mgsndman.hpp"
 #include "machgui/ingame.hpp"
@@ -252,7 +253,9 @@ bool MachGuiDeconstructCommand::doAdminApply(MachLogAdministrator* pAdministrato
 bool MachGuiDeconstructCommand::processButtonEvent(const GuiKeyEvent& event)
 {
     const DevButtonEvent& be = event.buttonEvent();
-    if (isVisible() && be.scanCode() == Device::KeyCode::KEY_D && be.action() == DevButtonEvent::PRESS && be.previous() == 0)
+    static const auto & trigger = MachGui::inputRegistry()->getShortcut("commands-deconstruct-trigger");
+    if (isVisible() && trigger.matches(event.keyWithMods()) && be.action() == DevButtonEvent::PRESS
+        && be.previous() == 0)
     {
         inGameScreen().activeCommand(*this);
         return true;
