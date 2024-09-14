@@ -191,7 +191,7 @@ void MachPhysEntityDamage::update()
     if (damageLevel_ >= 50)
     {
         // flame1 start
-        PhysRelativeTime duration = 60;
+        PhysRelativeTime duration = 10;
         if (pFlame1_ == nullptr && flameWidths_[0] * flameHeights_[0] != 0)
             pFlame1_ = new MachPhysSTFFlame(
                 pTarget_,
@@ -228,7 +228,7 @@ void MachPhysEntityDamage::update()
     if (damageLevel_ >= 65)
     {
         // Flame3 start
-        PhysRelativeTime duration = 60;
+        PhysRelativeTime duration = 10;
 
         if (pFlame3_ == nullptr && flameWidths_[2] * flameHeights_[2] != 0)
             pFlame3_ = new MachPhysSTFFlame(
@@ -284,7 +284,7 @@ void MachPhysEntityDamage::update()
     {
         // flame2 starts
 
-        PhysRelativeTime duration = 60;
+        PhysRelativeTime duration = 10;
         if (pFlame2_ == nullptr && flameWidths_[1] * flameHeights_[1] != 0)
             pFlame2_ = new MachPhysSTFFlame(
                 pTarget_,

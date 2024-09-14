@@ -87,6 +87,7 @@
 #include "machlog/apc.hpp"
 #include "machphys/techdata.hpp"
 #include "machphys/apcdata.hpp"
+#include "machphys/constron.hpp"
 #include "machphys/rcardata.hpp"
 #include "gui/gui.hpp"
 #include "gui/event.hpp"
@@ -1411,6 +1412,9 @@ void MachInGameScreen::asynchronousUpdate()
         case 15:
             pConstructionNavigation_->update();
             break;
+        case 17:
+            updatePhysDamageLevels();
+            break;
         case 19:
             updateGameState();
             break;
@@ -2573,6 +2577,19 @@ void MachInGameScreen::updateGameState()
             gameState_ = WON;
             gameStateTimer_ = Phys::time();
             W4dSoundManager::instance().stopAll();
+        }
+    }
+}
+
+void MachInGameScreen::updatePhysDamageLevels()
+{
+    MachLogRaces& races = MachLogRaces::instance();
+    for (MachActor* object : races.objects())
+    {
+        if (object->objectIsConstruction())
+        {
+            MachLogConstruction& construction = object->asConstruction();
+            // construction.physConstruction().updateDamageLevel();
         }
     }
 }

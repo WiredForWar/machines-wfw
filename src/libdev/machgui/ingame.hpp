@@ -326,6 +326,9 @@ protected:
     // Update whether the game has been lost or won
     void updateGameState();
 
+    // Go over all phys objects and call their updateDamageLevel()
+    void updatePhysDamageLevels();
+
     // inherited from GuiDisplayable...
     void doDisplay() override;
 
