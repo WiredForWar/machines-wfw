@@ -17,7 +17,13 @@ set(AFX_SOURCES
 # afx_lite is used with test suite
 add_library(afx_lite OBJECT ${AFX_SOURCES})
 add_library(afx OBJECT ${AFX_SOURCES} AfxSdlApp.cpp)
+add_library(LibDev::afx ALIAS afx)
+
 target_link_libraries(afx PUBLIC
+    LibDev::base
+    LibDev::device
     LibDev::render
+    LibDev::recorder
+    LibDev::system
     SDL2::SDL2
 )
