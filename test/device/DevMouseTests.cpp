@@ -1,9 +1,10 @@
 #include <utility>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
+
 #include "device/mouse.hpp"
-#include "butevent.cpp"
-#include "sdlmouse.cpp"
+#include "device/butevent.cpp"
+#include "device/sdlmouse.cpp"
 
 using ::testing::TypedEq;
 using ::testing::Return;
