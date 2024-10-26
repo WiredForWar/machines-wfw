@@ -94,7 +94,6 @@ Use provided Docker image for building or manually setup your environment.
 `libsdl2-dev libsdl2-image-dev libopenal-dev libalure-dev libenet-dev libfreetype6-dev libglew-dev libglm-dev libaudio-dev libswscale-dev`
 
 ####  Building
-`git clone && git lfs pull`
 
 ##### For Windows on linux/docker
 ```
