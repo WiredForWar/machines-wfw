@@ -19,17 +19,6 @@
 class BaseLogBuffer;
 class IProgressReporter;
 
-// TODO: handle timer
-static size_t count;
-static size_t call_stack;
-
-static uint32 next_update_time_ls;
-static uint32 next_update_time_ms;
-static uint32 time_increment_ls;
-static uint32 time_increment_ms;
-
-static bool profiling_enabled;
-
 class ProProfiler
 // Canonical form revoked
 {
