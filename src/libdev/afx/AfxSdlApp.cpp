@@ -261,7 +261,6 @@ void AfxSdlApp::dispatchEvent(const SDL_Event* event)
             break;
 
         default:
-            std::cerr << "Unexpected event type " << event->type << std::endl;
             break;
     }
     RecRecorder::instance().recordingAllowed(true);
