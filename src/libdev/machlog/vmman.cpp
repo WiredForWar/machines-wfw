@@ -287,13 +287,10 @@ bool MachLogVoiceMailManager::postNewMail(VoiceMailID id, UtlId actorId, MachPhy
             if (pMail->hasActorId() && pMail->actorId() == actorId)
             {
                 ++nActorMailsInQueue;
-                if (nActorMailsInQueue > 1)
-                {
-                    acceptMail = false;
-                    break;
-                }
             }
         }
+
+        acceptMail = nActorMailsInQueue <= 1;
     }
 
     if (!acceptMail)
