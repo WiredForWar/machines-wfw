@@ -13,10 +13,11 @@
 #define _MACHGUI_DROPDOWN_HPP
 
 #include "base/base.hpp"
-#include "ctl/vector.hpp"
 #include "machgui/sslistit.hpp"
 #include "machgui/sslistbx.hpp"
 #include "machgui/autodel.hpp"
+
+#include <vector>
 
 class MachGuiDropDownListBoxItem;
 
@@ -32,7 +33,7 @@ public:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText);
+        const std::vector<std::string>& itemText);
 
     MachGuiDropDownListBox(
         MachGuiStartupScreens* pParent,
@@ -41,7 +42,7 @@ public:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         bool whiteFont);
 
     ~MachGuiDropDownListBox() override;
@@ -67,7 +68,7 @@ private:
     void CLASS_INVARIANT;
 
     // Data members...
-    ctl_vector<std::string> itemText_;
+    std::vector<std::string> itemText_;
     size_t itemWidth_;
     double timeInterval_;
     double timeStart_;

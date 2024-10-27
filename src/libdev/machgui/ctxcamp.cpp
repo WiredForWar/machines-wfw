@@ -28,7 +28,6 @@
 #include "gui/font.hpp"
 #include "gui/restring.hpp"
 #include "machgui/internal/strings.hpp"
-#include "ctl/vector.hpp"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -355,7 +354,7 @@ void MachGuiCtxCampaign::deletePlayer()
     MachGuiDatabase::instance().removePlayer(pSelectedPlayer_);
 
     // Construct a list of saved games with no player attached
-    typedef ctl_vector<MachGuiDbSavedGame*> SavedGames;
+    using SavedGames =  std::vector<MachGuiDbSavedGame*>;
     SavedGames savedGamesWithNoPlayer;
     savedGamesWithNoPlayer.reserve(64);
 

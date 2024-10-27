@@ -100,7 +100,7 @@ bool GuiBmpFontCore::endOfChar(int x)
 
 // This should be a private static member function as above but Watcoms crappy compiler
 // can't handle the template code.
-using GuiBmpFonts = ctl_vector<GuiBmpFont>;
+using GuiBmpFonts = std::vector<GuiBmpFont>;
 
 GuiBmpFonts& getFontCache()
 {
@@ -151,8 +151,6 @@ GuiBmpFont GuiBmpFont::getFont(
     size_t spaceCharWidth /*= 7*/,
     size_t spacing /*= 1*/)
 {
-    typedef ctl_vector<GuiBmpFont> GuiBmpFonts;
-
     GuiBmpFonts& fonts = getFontCache();
 
     for (GuiBmpFonts::iterator iter = fonts.begin(); iter != fonts.end(); ++iter)

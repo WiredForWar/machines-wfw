@@ -114,7 +114,7 @@ MachGuiDropDownListBox::MachGuiDropDownListBox(
     size_t verticalSpacing,
     size_t scrollInc,
     size_t itemWidth,
-    const ctl_vector<std::string>& itemText)
+    const std::vector<std::string>& itemText)
     : GuiSingleSelectionListBox(pParent, box, horizontalSpacing, verticalSpacing, scrollInc)
     , MachGuiAutoDeleteDisplayable(pParent)
     , itemText_(itemText)
@@ -137,7 +137,7 @@ MachGuiDropDownListBox::MachGuiDropDownListBox(
     size_t verticalSpacing,
     size_t scrollInc,
     size_t itemWidth,
-    const ctl_vector<std::string>& itemText,
+    const std::vector<std::string>& itemText,
     bool whiteFont)
     : GuiSingleSelectionListBox(pParent, box, horizontalSpacing, verticalSpacing, scrollInc)
     , MachGuiAutoDeleteDisplayable(pParent)

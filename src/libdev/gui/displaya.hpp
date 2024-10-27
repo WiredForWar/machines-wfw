@@ -43,6 +43,8 @@
 #include "device/butevent.hpp"
 #include "gui/gui.hpp"
 
+#include <vector>
+
 class GuiDisplayableImpl;
 class GuiKeyEvent;
 class GuiMouseEvent;
@@ -50,8 +52,6 @@ class GuiEvent;
 // class DevButtonEvent;
 
 using GuiCharEvent = DevButtonEvent;
-
-template <class T> class ctl_vector;
 
 // GuiDisplayable is the root of the class heirarchy of screen objects.
 // It defines framework protocols for display and responding to
@@ -157,7 +157,7 @@ public:
     bool hasChild(const GuiDisplayable*) const;
     bool recursivelyHasChild(const GuiDisplayable*) const;
 
-    using Children = ctl_vector<GuiDisplayable*>;
+    using Children = std::vector<GuiDisplayable*>;
 
     GuiDisplayable* parent();
 
