@@ -38,7 +38,7 @@ public:
     void normalIndex(USHORT newNormalIndex) { normalIndex_ = newNormalIndex; }
 
     void hasColor(bool newHasColor);
-    bool hasColor() const { return !color_ == NULL; }
+    bool hasColor() const { return color_ != nullptr; }
 
     const GXColor& color() const
     {
