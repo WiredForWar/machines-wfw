@@ -224,7 +224,7 @@ void RenIGXMeshLoader::load(const SysPathName& pathname)
     gxerror = gxfile.open(pathname.pathname());
     if (gxerror != NO_ERROR_AGT)
     {
-        gxfile.reportAGTError(FILE_OPEN_AGT, (void*)pathname.pathname().c_str());
+        gxfile.reportAGTError(FILE_OPEN_AGT, pathname.pathname().c_str());
     }
     else
     {

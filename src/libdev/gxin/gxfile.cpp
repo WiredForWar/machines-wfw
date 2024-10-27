@@ -74,7 +74,7 @@ GXError GXFile::skipHeader()
             if (strcmp(localHeader, header) != 0)
             {
                 err = HEADER_NAME_AGT;
-                err = reportAGTError(err, (void*)localHeader);
+                err = reportAGTError(err, localHeader);
             }
             else
             {
@@ -152,7 +152,7 @@ GXError GXFile::skipSection()
 
     if (err != NO_ERROR_AGT)
     {
-        err = reportAGTError(err, (void*)&currentChar);
+        err = reportAGTError(err, &currentChar);
     }
 
     return err;
@@ -278,7 +278,7 @@ GXError GXFile::skipSpaces()
                 else
                 { // only one comment character found error
                     err = COMMENT_AGT;
-                    err = reportAGTError(err, (void*)"/");
+                    err = reportAGTError(err, "/");
                     return err;
                 }
             }
@@ -329,7 +329,7 @@ GXError GXFile::readChar(char* num)
     PRE(num);
 
     err = readNumber(&number, CHAR_T);
-    *num = (char)number;
+    *num = static_cast<char>(number);
 
     return err;
 }
@@ -343,7 +343,7 @@ GXError GXFile::readUChar(UCHAR* num)
     PRE(num);
 
     err = readNumber(&number, CHAR_T);
-    *num = (UCHAR)number;
+    *num = static_cast<UCHAR>(number);
 
     return err;
 }
@@ -356,7 +356,7 @@ GXError GXFile::readShort(short* num)
     PRE(isOpen());
     PRE(num);
     err = readNumber(&number, SHORT_T);
-    *num = (short)number;
+    *num = static_cast<short>(number);
 
     return err;
 }
@@ -369,7 +369,7 @@ GXError GXFile::readUShort(USHORT* num)
     PRE(isOpen());
     PRE(num);
     err = readNumber(&number, USHORT_T);
-    *num = (USHORT)number;
+    *num = static_cast<USHORT>(number);
 
     return err;
 }
@@ -383,8 +383,8 @@ GXError GXFile::readLong(long* num)
     PRE(num);
 
     err = readNumber(&number, LONG_T);
+    *num = static_cast<long>(number);
 
-    *num = (long)number;
     return err;
 }
 
@@ -397,7 +397,7 @@ GXError GXFile::readFloat(float* num)
     PRE(num);
 
     err = readFloatNum(&number, FLOAT_T);
-    *num = (float)number;
+    *num = static_cast<float>(number);
 
     return err;
 }
@@ -427,7 +427,7 @@ GXError GXFile::readFloatNum(double* num, const GXNumTypes& type)
                 if (dotCount > 1)
                 {
                     err = FLOAT_AGT;
-                    err = reportAGTError(err, (void*)numStr);
+                    err = reportAGTError(err, numStr);
                 }
             }
             if ((numStr[i] == 'e') || (numStr[i] == 'E'))
@@ -436,7 +436,7 @@ GXError GXFile::readFloatNum(double* num, const GXNumTypes& type)
                 if (expCount > 1)
                 {
                     err = FLOAT_AGT;
-                    err = reportAGTError(err, (void*)numStr);
+                    err = reportAGTError(err, numStr);
                 }
             }
             if (type == FLOAT_T)
@@ -455,7 +455,7 @@ GXError GXFile::readFloatNum(double* num, const GXNumTypes& type)
         else // not valid digit
         {
             err = COUNT_AGT;
-            err = reportAGTError(err, (void*)&currentLine_[linePos_ - 1]);
+            err = reportAGTError(err, &currentLine_[linePos_ - 1]);
             return err;
         }
         i++;
@@ -466,7 +466,8 @@ GXError GXFile::readFloatNum(double* num, const GXNumTypes& type)
         if (currentLine_[++linePos_] != numTypeChar_[type])
         {
             err = TOKEN_AGT;
-            err = reportAGTError(err, (void*)&type);
+            char typeAsChar = type;
+            err = reportAGTError(err, &typeAsChar);
         }
         linePos_++; // put cursor in white space
     }
@@ -569,7 +570,7 @@ GXError GXFile::readNumber(ULONG* number, const GXNumTypes& type)
         else
         {
             err = COUNT_AGT;
-            err = reportAGTError(err, (void*)&currentLine_[linePos_ - 1]);
+            err = reportAGTError(err, &currentLine_[linePos_ - 1]);
             return err;
         }
 
@@ -581,7 +582,7 @@ GXError GXFile::readNumber(ULONG* number, const GXNumTypes& type)
         if (currentLine_[++linePos_] != numTypeChar_[type])
         {
             err = TOKEN_AGT;
-            err = reportAGTError(err, (void*)&(numTypeChar_[type]));
+            err = reportAGTError(err, &(numTypeChar_[type]));
         }
     }
 
@@ -595,7 +596,7 @@ GXError GXFile::readNumber(ULONG* number, const GXNumTypes& type)
     return err;
 }
 
-GXError GXFile::reportAGTError(GXError error, void* info)
+GXError GXFile::reportAGTError(GXError error, const char* info)
 {
     // TODO: find a way to remove this ugly void* argument passing and have
     // method accept different type of argument according to the error type
@@ -606,11 +607,11 @@ GXError GXFile::reportAGTError(GXError error, void* info)
     {
         case FILE_OPEN_AGT:
             printf("couldn't open the file ");
-            printf("%s", (char*)info);
+            printf("%s", info);
             break;
 
         case HEADER_NAME_AGT:
-            printf("name %s is an invalid header", (char*)info);
+            printf("name %s is an invalid header", info);
             break;
 
         case HEADER_VERSION_AGT:
@@ -625,7 +626,7 @@ GXError GXFile::reportAGTError(GXError error, void* info)
 
         case MEMORY_AGT:
             printf("couldn't allocate memory for");
-            printf("%s", (char*)info);
+            printf("%s", info);
             break;
 
         case LINE_AGT:
@@ -637,15 +638,15 @@ GXError GXFile::reportAGTError(GXError error, void* info)
             break;
 
         case TOKEN_AGT:
-            printf("unexpected token. Expecting %c", *((char*)info));
+            printf("unexpected token. Expecting %c", *info);
             break;
 
         case FLOAT_AGT:
-            printf("invalid float number %s", (char*)info);
+            printf("invalid float number %s", info);
             break;
 
         case COUNT_AGT:
-            printf("unexpected token. Expecting number digit or :, but received %c", *((char*)info));
+            printf("unexpected token. Expecting number digit or :, but received %c", *info);
             break;
 
         case DUP_AGID_AGT:
@@ -661,11 +662,11 @@ GXError GXFile::reportAGTError(GXError error, void* info)
             break;
 
         case INV_AGID_AGT:
-            printf("invalid AGID &%s", (char*)info);
+            printf("invalid AGID &%s", info);
             break;
 
         case LABEL_TOOLONG_AGT:
-            printf("label @%s too long. Probably invalid", (char*)info);
+            printf("label @%s too long. Probably invalid", info);
             break;
 
         case MATRIX_ROW_AGT:
@@ -772,7 +773,7 @@ GXError GXFile::getNextValidChar(char validChar, bool report)
             {
                 // TODO why this ???
                 if ((currentLine_[linePos_] != '}') || (validChar != '@'))
-                    err = reportAGTError(err, (void*)&validChar);
+                    err = reportAGTError(err, &validChar);
             }
         }
         else
@@ -785,7 +786,7 @@ bool GXFile::validHexDigit(char digit)
 {
     bool isValid = false;
 
-    digit = (char)toupper((int)digit);
+    digit = static_cast<char>(toupper(static_cast<int>(digit)));
 
     if ((digit >= '0') && (digit <= '9'))
         isValid = true;
@@ -819,7 +820,7 @@ GXError GXFile::readGXIdPos(GXIdPos& gxidpos, bool report, bool validate, void* 
             if (validHexDigit(agidStr[i]) == false)
             {
                 err = INV_AGID_AGT;
-                reportAGTError(err, (void*)agidStr);
+                reportAGTError(err, agidStr);
                 // err = ReportAGTError(err,(void*)agidstr);
             }
         }
@@ -1109,7 +1110,7 @@ GXError GXFile::read3DPointArray(GXMesh& mesh)
             if (err == NO_ERROR_AGT)
             {
                 // performn the allocation of points array
-                mesh.numPoints((USHORT)count);
+                mesh.numPoints(static_cast<USHORT>(count));
                 for (i = 0; (i < count) && (err == NO_ERROR_AGT); i++)
                 {
                     GXPoint3 gxpoint;
@@ -1287,7 +1288,7 @@ GXError GXFile::readPolygonArray(GXMesh& mesh, UCHAR numVertex)
                 if (type.type() != POLYGON)
                 {
                     err = LABEL_AGT;
-                    err = reportAGTError(err, (void*)&type);
+                    err = reportAGTError(err, nullptr);
                 }
             }
         }
@@ -1357,7 +1358,7 @@ GXError GXFile::readPolygon(GXPolygon3& polygon, UCHAR numVertex)
             if (type.type() != POLYGONVERTEX)
             {
                 err = LABEL_AGT;
-                err = reportAGTError(err, (void*)&type);
+                err = reportAGTError(err, nullptr);
             }
             return err;
         }
@@ -1647,7 +1648,7 @@ GXError GXFile::readChildInfo(GXHier& mesh, GXIdPos agidPos)
                     UCHAR dummy;
                     err = readUChar(&dummy);
 
-                    if ((err == NO_ERROR_AGT))
+                    if (err == NO_ERROR_AGT)
                     {
                         err = NO_ERROR_AGT;
                         while (err == NO_ERROR_AGT) // TODO ????
@@ -1722,7 +1723,7 @@ GXError GXFile::readTransform(GXHier& mesh)
 
                         default:
                             err = LABEL_AGT;
-                            reportAGTError(err, (void*)&type);
+                            reportAGTError(err, nullptr);
                             break;
                     }
                     if (err == NO_ERROR_AGT)

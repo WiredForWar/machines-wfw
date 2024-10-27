@@ -109,7 +109,7 @@ public:
 
     GXError readHierarchy(GXHier&);
 
-    GXError reportAGTError(GXError, void*);
+    GXError reportAGTError(GXError, const char *);
 
 private:
     // deliberately revoked: do not want two instances to access the same file
