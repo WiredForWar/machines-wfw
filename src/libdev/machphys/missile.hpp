@@ -67,10 +67,7 @@ private:
     MachPhysMissile& operator=(const MachPhysMissile&);
     bool operator==(const MachPhysMissile&);
 
-    enum
-    {
-        MAX_LEVELS = 10
-    };
+    static constexpr int MAX_LEVELS = 10;
 
     //  This is necessary to allow the ti file to instantiate the factory class
     // friend MachPhysMissile& Factory::part( const ID& id, size_t );

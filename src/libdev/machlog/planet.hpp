@@ -124,10 +124,8 @@ private:
     int nextSiteID();
 
     // Constants
-    enum
-    {
-        DOMAIN_CLEARANCE = 14 // Nominal clearance(m) used for config space
-    };
+    // Nominal clearance(m) used for config space
+    static constexpr int DOMAIN_CLEARANCE = 14;
 
     // Create and initialise the config space
     using ObstacleFlags = uint32;

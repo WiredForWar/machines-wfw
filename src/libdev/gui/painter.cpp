@@ -176,10 +176,7 @@ void GuiPainter::filledBorder(
     unsigned halfShadowThickness
         = (m.shadowThickness() % 2 == 0) ? (m.shadowThickness() - 1) / 2 : (m.shadowThickness()) / 2;
 
-    enum
-    {
-        TBD_REMOVE_HACK_OFFSET = 1
-    };
+    static constexpr int TBD_REMOVE_HACK_OFFSET = 1;
 
     Gui::Coord borderBottomLeft(
         absCoord.x() + m.frameThickness(),

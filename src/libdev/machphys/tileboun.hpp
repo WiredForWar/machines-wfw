@@ -30,10 +30,7 @@ class MexPoint3d;
 class MachPhysTileBoundary
 {
 public:
-    enum
-    {
-        maxXYVertices = 16
-    };
+    static constexpr int maxXYVertices = 16;
 
     // ctor. The grid consists of nXVertices by nYVertices points.
     // The total number of triangles in the mesh is nTriangles.

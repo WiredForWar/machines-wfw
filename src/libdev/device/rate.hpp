@@ -48,10 +48,7 @@ private:
     //  This is a friend purely to allow template instantiation
     friend void devDummyFunction();
 
-    enum
-    {
-        N_READINGS = 10
-    };
+    static constexpr int N_READINGS = 10;
 
     CTL_PAIR(Reading, double, numerator, double, denominator);
 

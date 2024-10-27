@@ -183,11 +183,8 @@ private:
     bool operator==(const PhysCS2dImpl&);
 
     // Private constants etc
-    enum
-    {
-        EXPANSION_SPACE_THRESHOLD = 5 // Polygon count at which expansion space is cleared
-                                      // on opening.
-    };
+    // Polygon count at which expansion space is cleared on opening.
+    static constexpr int EXPANSION_SPACE_THRESHOLD = 5;
 
     // Adds domain to the collection of domains
     void add(PhysCS2dDomain* domain);

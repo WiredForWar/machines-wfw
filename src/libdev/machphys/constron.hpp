@@ -36,10 +36,7 @@ class MachPhysConstruction : public W4dComposite
 public:
     ~MachPhysConstruction() override;
 
-    enum
-    {
-        N_BUILDING_LEVELS = 10
-    };
+    static constexpr int N_BUILDING_LEVELS = 10;
 
     void CLASS_INVARIANT;
 

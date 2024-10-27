@@ -349,13 +349,12 @@ private:
     friend std::ostream& operator<<(std::ostream& o, const InternalState& t);
 
     // Timing constant values
-    enum
-    {
-        ADVANCE_UPDATE_INTERVAL = 2, // Number of seconds before end of current motion
-                                     // at which we want to try and queue motion for next chunk
-        WAITING_TIMEOUT = 5 // How long we sit in wait state before trying to move round the
-                            // obstacle
-    };
+    // Number of seconds before end of current motion
+    // at which we want to try and queue motion for next chunk
+    static constexpr int ADVANCE_UPDATE_INTERVAL = 2;
+
+    // How long we sit in wait state before trying to move round the obstacle
+    static constexpr int WAITING_TIMEOUT = 5;
 
     // true if in a convoy
     bool isInConvoy() const;

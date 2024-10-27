@@ -292,10 +292,7 @@ protected:
 private:
     friend class MachLogConstructionImpl;
 
-    enum damageInterval
-    {
-        VOICE_MAIL_HIT_INTERVAL = 15
-    };
+    static constexpr PhysRelativeTime VOICE_MAIL_HIT_INTERVAL = 15;
 
     // Operations deliberately revoked
     MachLogConstruction(const MachLogConstruction&);
@@ -303,10 +300,8 @@ private:
     bool operator==(const MachLogConstruction&);
 
     // Useful constants
-    enum
-    {
-        CONSTRUCTION_DELAY = 5 // Time taken to visualise added building material
-    };
+    // Time taken to visualise added building material
+    static constexpr int CONSTRUCTION_DELAY = 5;
 
     // Converts 2d point coordinates local to building to global coordinates
     MexPoint2d globalPoint2d(const MexPoint2d& localPoint) const;

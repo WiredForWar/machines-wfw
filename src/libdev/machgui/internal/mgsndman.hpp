@@ -23,10 +23,7 @@ class MachGuiSoundManager
 public:
     // The maximum number of sounds that can be playing
     // at a single time
-    enum
-    {
-        MAX_SOUNDS = 3
-    };
+    static constexpr int MAX_SOUNDS = 3;
 
     //  Singleton class
     static MachGuiSoundManager& instance();

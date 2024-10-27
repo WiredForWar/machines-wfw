@@ -114,10 +114,7 @@ private:
     MATHEX_SCALAR sinPitchAngle_; // sine of the pitch angle
     MATHEX_SCALAR zoomDistance_; // distance of camera from centre of view on terrain
 
-    enum
-    {
-        N_MAX_STORED_HEIGHTS = 50
-    };
+    static constexpr int N_MAX_STORED_HEIGHTS = 50;
     MATHEX_SCALAR aStoredTerrainHeights_[N_MAX_STORED_HEIGHTS]; // Terrain heights on last few frames
     PhysAbsoluteTime aStoredTimes_[N_MAX_STORED_HEIGHTS]; // Times on last few frames
     uint nStoredTerrainHeights_; // Number of entries in above array

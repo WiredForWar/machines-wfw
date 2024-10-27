@@ -87,14 +87,8 @@ public:
 
     friend std::ostream& operator<<(std::ostream& o, const MachLogResearchItem& t);
 
-    enum
-    {
-        N_RESEARCH_RACES = MachPhys::N_RACES
-    };
-    enum
-    {
-        MAX_SW_LEVELS = 5
-    };
+    static constexpr int N_RESEARCH_RACES = MachPhys::N_RACES;
+    static constexpr int MAX_SW_LEVELS = 5;
 
     PER_MEMBER_PERSISTENT(MachLogResearchItem);
     PER_FRIEND_READ_WRITE(MachLogResearchItem);

@@ -45,12 +45,9 @@ private:
     BasePoolAllocator(const BasePoolAllocator&);
     BasePoolAllocator& operator=(const BasePoolAllocator&);
 
-    enum
-    {
-        UNIT_SIZE_P2 = 2,
-        UNIT_SIZE = 4,
-        UNIT_THRESHOLD = 4097
-    };
+    static constexpr int UNIT_SIZE_P2 = 2;
+    static constexpr int UNIT_SIZE = 4;
+    static constexpr int UNIT_THRESHOLD = 4097;
 
     // Block that has been allocated. It always remains the same size.
     using Unit = uint32_t;

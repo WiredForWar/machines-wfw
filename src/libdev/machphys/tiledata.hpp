@@ -75,12 +75,11 @@ private:
     MachPhysTileData& operator=(const MachPhysTileData&);
     bool operator==(const MachPhysTileData&);
 
-    // constants
-    enum
-    {
-        NMAX_VERTICES = 11, // Maximum number of vertices in either direction
-        NMAX_TRIANGLES = 255, // Maximum number of triangles in the mesh
-    };
+    // Maximum number of vertices in either direction
+    static constexpr int NMAX_VERTICES = 11;
+
+    // Maximum number of triangles in the mesh
+    static constexpr int NMAX_TRIANGLES = 255;
 
     // Private data types used in implementation
 

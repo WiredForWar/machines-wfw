@@ -35,10 +35,7 @@ public:
         MachInGameScreen* pInGameScreen);
     ~MachGuiSquadronBank() override;
 
-    enum
-    {
-        N_SQUADRON_ICONS = 10
-    };
+    static constexpr int N_SQUADRON_ICONS = 10;
 
     static size_t reqWidth();
     static size_t reqHeight();

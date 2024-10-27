@@ -42,12 +42,9 @@ namespace Ren
     // static const uint NullTexId;
 
     // These are maximum values per mesh.
-    enum
-    {
-        maxVertices = 65535,
-        maxTriangles = 65535,
-        maxMaterials = 255
-    };
+    static constexpr int maxVertices = 65535;
+    static constexpr int maxTriangles = 65535;
+    static constexpr int maxMaterials = 255;
 
     using MeshPtr = CtlCountedPtr<RenMesh>;
     using ConstMeshPtr = CtlConstCountedPtr<RenMesh>;

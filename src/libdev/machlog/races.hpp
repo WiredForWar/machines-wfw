@@ -438,10 +438,9 @@ public:
     // The generator used to generate the ids
     // this used to be in MachActor but the correct place for it is here
     // it has also been made public
-    enum
-    {
-        ID_UPPER_BOUND = 2001
-    }; // This means no more than 2000 actors can exist.
+    static constexpr int ID_UPPER_BOUND = 2001;
+    // This means no more than 2000 actors can exist.
+
     static UtlBoundedIdGenerator& idGenerator();
     // The maximum number of actors that can be created
     static int maxActors();

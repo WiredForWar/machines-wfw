@@ -13,17 +13,14 @@
 template <class BITWISE> class UtlBuffer
 {
 public:
-    using size_type = size_t;
+    using size_type = std::size_t;
     using value_type = BITWISE;
     using iterator = value_type*;
     using const_iterator = const value_type*;
 
     ///////////////////////////////
 
-    enum
-    {
-        DEFAULT_N_ITEMS = 1
-    };
+    static constexpr size_type DEFAULT_N_ITEMS = 1;
     UtlBuffer(size_type nItems = DEFAULT_N_ITEMS);
 
     UtlBuffer(BITWISE* data, size_type nItems);

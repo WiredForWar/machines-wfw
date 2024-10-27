@@ -106,10 +106,7 @@ private:
     /////////////////////////////////////////////////
     static size_type nBlocksRequired(size_type sz);
 
-    enum
-    {
-        ELEM_BIT = sizeof(unsigned long) * CHAR_BIT
-    };
+    static constexpr std::size_t ELEM_BIT = sizeof(unsigned long) * CHAR_BIT;
 
     size_t size_;
     size_t nBlocks_;

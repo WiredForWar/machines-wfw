@@ -128,10 +128,7 @@ private:
 
     static Gui::ScrollState getScrollDirection(DevButtonEvent::Action act);
 
-    enum
-    {
-        N_BUFFERS = 2
-    };
+    static constexpr int N_BUFFERS = 2;
 
     // Data members
     GuiManagerImpl* pImpl_;

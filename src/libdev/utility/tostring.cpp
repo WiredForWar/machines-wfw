@@ -87,10 +87,7 @@ std::string utlToString(double f)
 
 std::string utlToString(long double f)
 {
-    enum
-    {
-        BUFFER_SIZE = 64
-    };
+    static constexpr int BUFFER_SIZE = 64;
     char buffer[BUFFER_SIZE];
     int len = sprintf(buffer, "%lf", f);
     ASSERT(len <= BUFFER_SIZE, "");
