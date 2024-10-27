@@ -1,6 +1,7 @@
 #pragma once
 
-#include "base/persist.hpp"
+class PerOstream;
+class PerIstream;
 
 #include <string>
 

@@ -1,5 +1,7 @@
 #include "stdlib/string.hpp"
 
+#include "base/persist.hpp"
+
 static constexpr char stringPersistenceName[] = "basic_stringchar";
 
 void writeAllocatedStringFromPointer(PerOstream& ostr, const std::string* pOb)
