@@ -49,7 +49,7 @@ void MachLogArmourer::arm(MachLogAggressor* pActor)
     const MachLogAggressor& constActor = *pActor;
     const MachPhysAggressor& physActor = constActor.physAggressor();
     MachPhysAggressor& nonConstPhysActor = (MachPhysAggressor&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->addWeapon(createWeapon((MachLogRace*)&constActor.logRace(), pPhysWeapon, pActor));
@@ -63,7 +63,7 @@ void MachLogArmourer::rearm(MachLogAggressor* pActor)
     const MachLogAggressor& constActor = *pActor;
     const MachPhysAggressor& physActor = constActor.physAggressor();
     MachPhysAggressor& nonConstPhysActor = (MachPhysAggressor&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->weapons()[i]->setPhysicalWeapon(pPhysWeapon);
@@ -78,7 +78,7 @@ void MachLogArmourer::arm(MachLogAdministrator* pActor)
     const MachLogAdministrator& constActor = *pActor;
     const MachPhysAdministrator& physActor = constActor.physAdministrator();
     MachPhysAdministrator& nonConstPhysActor = (MachPhysAdministrator&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->addWeapon(createWeapon((MachLogRace*)&constActor.logRace(), pPhysWeapon, pActor));
@@ -92,7 +92,7 @@ void MachLogArmourer::rearm(MachLogAdministrator* pActor)
     const MachLogAdministrator& constActor = *pActor;
     const MachPhysAdministrator& physActor = constActor.physAdministrator();
     MachPhysAdministrator& nonConstPhysActor = (MachPhysAdministrator&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->weapons()[i]->setPhysicalWeapon(pPhysWeapon);
@@ -107,7 +107,7 @@ void MachLogArmourer::arm(MachLogMissileEmplacement* pActor)
     const MachLogMissileEmplacement& constActor = *pActor;
     const MachPhysMissileEmplacement& physActor = *constActor.pPhysMissileEmplacement();
     MachPhysMissileEmplacement& nonConstPhysActor = (MachPhysMissileEmplacement&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->addWeapon(createWeapon((MachLogRace*)&constActor.logRace(), pPhysWeapon, pActor));
@@ -121,7 +121,7 @@ void MachLogArmourer::rearm(MachLogMissileEmplacement* pActor)
     const MachLogMissileEmplacement& constActor = *pActor;
     const MachPhysMissileEmplacement& physActor = *constActor.pPhysMissileEmplacement();
     MachPhysMissileEmplacement& nonConstPhysActor = (MachPhysMissileEmplacement&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->weapons()[i]->setPhysicalWeapon(pPhysWeapon);
@@ -136,7 +136,7 @@ void MachLogArmourer::arm(MachLogPod* pActor)
     const MachLogPod& constActor = *pActor;
     const MachPhysPod& physActor = *constActor.pPhysPod();
     MachPhysPod& nonConstPhysActor = (MachPhysPod&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->addWeapon(createWeapon((MachLogRace*)&constActor.logRace(), pPhysWeapon, pActor));
@@ -150,7 +150,7 @@ void MachLogArmourer::rearm(MachLogPod* pActor)
     const MachLogPod& constActor = *pActor;
     const MachPhysPod& physActor = *constActor.pPhysPod();
     MachPhysPod& nonConstPhysActor = (MachPhysPod&)physActor;
-    for (int i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
+    for (std::size_t i = 0; i < nonConstPhysActor.nMountedWeapons(); ++i)
     {
         MachPhysWeapon* pPhysWeapon = &nonConstPhysActor.weapon(i);
         pActor->weapons()[i]->setPhysicalWeapon(pPhysWeapon);

@@ -56,7 +56,7 @@ bool MachLogReachedLocationCondition::doHasConditionBeenMet() const
     MachLogRaces& races = MachLogRaces::instance();
     if (objectType_ == MachLog::ARTEFACT)
     {
-        int nArtefacts = 0;
+        std::size_t nArtefacts = 0;
         for (MachLogRaces::Artefacts::iterator i = races.artefactsCollection().begin();
              i != races.artefactsCollection().end();
              ++i)
