@@ -58,16 +58,14 @@ class MachLogSquadron;
 class MachActorImpl;
 class MachLogMachine;
 
-template <class X> class ctl_pvector;
-
 class MachActor
     : public SimActor
     , public MachLogCanBeDestroyed
 // cannonical form revoked
 {
 public:
-    using Actors = ctl_vector<UtlId>;
-    using Machines = ctl_pvector<MachLogMachine>;
+    using Actors = std::vector<UtlId>;
+    using Machines = std::vector<MachLogMachine*>;
 
     MachActor(MachLogRace* pRace, W4dEntity*, MachLog::ObjectType, std::optional<UtlId> withId = std::nullopt);
 

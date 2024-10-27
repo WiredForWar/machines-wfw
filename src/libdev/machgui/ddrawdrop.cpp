@@ -70,7 +70,7 @@ MachGuiDropDownList* MachGuiDDrawDropDownListBoxCreator::createDropDownList(
     size_t verticalSpacing,
     size_t scrollInc,
     size_t itemWidth,
-    const ctl_vector<std::string>& itemText,
+    const std::vector<std::string>& itemText,
     MachGuiDropDownListBoxCreator* listBoxCreator)
 {
     return new MachGuiDDrawDropDownList(
@@ -116,7 +116,7 @@ MachGuiDDrawDropDownList::MachGuiDDrawDropDownList(
     size_t verticalSpacing,
     size_t scrollInc,
     size_t itemWidth,
-    const ctl_vector<std::string>& itemText,
+    const std::vector<std::string>& itemText,
     MachGuiDropDownListBoxCreator* listBoxCreator,
     MachGuiDropDownCallback* callbackHandler)
     : MachGuiDropDownList(
@@ -140,7 +140,7 @@ MachGuiDDrawDropDownList::MachGuiDDrawDropDownList(
     size_t verticalSpacing,
     size_t scrollInc,
     size_t itemWidth,
-    const ctl_vector<std::string>& itemText,
+    const std::vector<std::string>& itemText,
     MachGuiDropDownListBoxCreator* listBoxCreator,
     bool whiteFont,
     MachGuiDropDownCallback* callbackHandler)

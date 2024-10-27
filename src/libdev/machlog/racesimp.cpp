@@ -71,9 +71,9 @@ void perWrite(PerOstream& ostr, const MachLogRacesDataImpl& impl)
 
     for (MachPhys::Race i : MachPhys::AllRaces)
     {
-        const ctl_vector<MexPoint2d> tempPoints(impl.aggressorAssemblyPoints_[i]);
+        const std::vector<MexPoint2d>& tempPoints(impl.aggressorAssemblyPoints_[i]);
         PER_WRITE_RAW_OBJECT(ostr, tempPoints);
-        const ctl_vector<MexPoint2d> tempPoints2(impl.administratorAssemblyPoints_[i]);
+        const std::vector<MexPoint2d>& tempPoints2(impl.administratorAssemblyPoints_[i]);
         PER_WRITE_RAW_OBJECT(ostr, tempPoints2);
     }
 

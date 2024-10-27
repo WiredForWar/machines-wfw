@@ -4,7 +4,6 @@
  */
 
 #include "gui/restring.hpp"
-#include "ctl/vector.hpp"
 
 #include <ctype.h>
 

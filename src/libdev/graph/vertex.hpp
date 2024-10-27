@@ -6,7 +6,7 @@
 #ifndef _GRA_VERTEX_HPP
 #define _GRA_VERTEX_HPP
 
-#include "ctl/vector.hpp"
+#include <vector>
 
 /* //////////////////////////////////////////////////////////////// */
 
@@ -19,7 +19,7 @@ template <class VERTEX_ITEM, class ARC_ID> class GraVertex
 public:
     using VertexItem = VERTEX_ITEM;
     using ArcId = ARC_ID;
-    using ArcIds = ctl_vector<ArcId>;
+    using ArcIds = std::vector<ArcId>;
     using Arity = unsigned long;
 
     GraVertex();

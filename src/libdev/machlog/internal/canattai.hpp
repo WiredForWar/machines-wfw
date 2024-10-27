@@ -13,7 +13,6 @@
 #define _MACHLOG_CANATTAI_HPP
 
 #include "base/base.hpp"
-#include "ctl/pvector.hpp"
 #include "machlog/canattac.hpp"
 
 class MachLogCanAttackImpl

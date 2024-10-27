@@ -21,6 +21,8 @@
 #include "phys/phys.hpp"
 #include "machphys/machphys.hpp"
 
+#include <vector>
+
 class MexPoint2d;
 class MexPoint3d;
 class MexVec3;
@@ -42,7 +44,7 @@ class MachPhysLocomotionMethod
 // Canonoical form revoked
 {
 public:
-    using W4dLinks = ctl_vector<W4dLink*>;
+    using W4dLinks = std::vector<W4dLink*>;
 
     //  Create a copy of a MachPhysLocomotionMethod and pass ownership
     //  of that copy back to the calling function. pMachine is a pointer

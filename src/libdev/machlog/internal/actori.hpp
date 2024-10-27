@@ -15,7 +15,6 @@
 
 #include "base/base.hpp"
 #include "base/persist.hpp"
-#include "ctl/pvector.hpp"
 #include "mathex/point3d.hpp"
 #include "machlog/actor.hpp"
 

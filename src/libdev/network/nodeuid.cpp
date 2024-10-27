@@ -1,4 +1,5 @@
 #include "network/nodeuid.hpp"
+#include "base/persist.hpp"
 
 const NetProcessUid& NetNodeUid::processUid() const
 {

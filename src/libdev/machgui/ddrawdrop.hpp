@@ -62,7 +62,7 @@ protected:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         MachGuiDropDownListBoxCreator*) override;
 
     bool doHandleNavigationKey(NavKey navKey, MachGuiFocusCapableControl** pFocusCapableControl) override;
@@ -86,7 +86,7 @@ public:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         MachGuiDropDownListBoxCreator*,
         MachGuiDropDownCallback* callbackHandler);
 
@@ -97,7 +97,7 @@ public:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         MachGuiDropDownListBoxCreator*,
         bool whiteFont,
         MachGuiDropDownCallback* callbackHandler);

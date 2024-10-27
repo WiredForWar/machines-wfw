@@ -16,7 +16,6 @@
 #include "system/pathname.hpp"
 #include "machlog/minesite.hpp"
 #include "machlog/planet.hpp"
-#include "ctl/pvector.hpp"
 #include "ctl/map.hpp"
 
 class MachLogPlanetImpl

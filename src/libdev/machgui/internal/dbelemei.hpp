@@ -14,8 +14,8 @@
 
 #include "base/base.hpp"
 #include "base/persist.hpp"
-#include "stdlib/string.hpp"
-#include "ctl/vector.hpp"
+
+#include <vector>
 
 // forward refs
 class MachGuiDbElement;
@@ -43,7 +43,7 @@ private:
     // data members
     bool isComplete_; // True if the current player has completed this element
     bool isCustom_; // True if this element is user planet and not stored in binary database
-    ctl_vector<MachGuiDbElement*> antecedents_; // Collection of elements that must be complete for this element
+    std::vector<MachGuiDbElement*> antecedents_; // Collection of elements that must be complete for this element
                                                 // to be undertaken
     uint menuStringId_; // Id of name std::string to be used in the menu selection list boxes
     std::string name_; // The name used in the definition file. Also used to generate eg scenario filename.

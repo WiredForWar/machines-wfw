@@ -12,17 +12,18 @@
 #define _GUI_RESTRING_HPP
 
 #include "base/base.hpp"
-#include "stdlib/string.hpp"
+
+#include <string>
+#include <vector>
 
 //////////////////////////////////////////////////////////////////////
 
 class AfxResourceLib;
-template <class T> class ctl_vector;
 
 // TBD: support for extended character sets, double-byte character sets, Unicode etc.
 
 using GuiString = std::string;
-using GuiStrings = ctl_vector<GuiString>;
+using GuiStrings = std::vector<GuiString>;
 
 class GuiResourceString
 // memberwise cannonical

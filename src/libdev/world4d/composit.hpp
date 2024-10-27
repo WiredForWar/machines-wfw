@@ -19,6 +19,8 @@
 #include "world4d/fwrdplan.hpp"
 #include "world4d/entity.hpp"
 
+#include <vector>
+
 template <class T> class ctl_vector;
 template <class T> class ctl_pvector;
 
@@ -135,7 +137,7 @@ public:
     // returned in ppLink.
     bool findLink(const std::string& id, W4dLink** ppLink) const;
 
-    using W4dLinks = ctl_vector<W4dLink*>;
+    using W4dLinks = std::vector<W4dLink*>;
 
     // The collection of links
     const W4dLinks& links() const;

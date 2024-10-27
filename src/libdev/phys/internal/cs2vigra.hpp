@@ -18,7 +18,6 @@
 #define _PHYS_CS2VIGRA_HPP
 
 #include "base/base.hpp"
-#include "ctl/vector.hpp"
 #include "mathex/point2d.hpp"
 #include "ftl/serialid.hpp"
 #include "ftl/seriamap.hpp"
@@ -163,8 +162,8 @@ private:
     };
 
     // Other private types
-    using PolygonIds = ctl_vector<PolygonId>;
-    using VertexIds = ctl_vector<VertexId>;
+    using PolygonIds = std::vector<PolygonId>;
+    using VertexIds = std::vector<VertexId>;
 
     enum ProcessingState
     {

@@ -20,7 +20,6 @@
 
 #include "base/base.hpp"
 #include "ctl/utility.hpp"
-#include "ctl/vector.hpp"
 
 ///////////////////////////////////
 
@@ -52,7 +51,7 @@ private:
 
     CTL_PAIR(Reading, double, numerator, double, denominator);
 
-    using Readings = ctl_vector<Reading>;
+    using Readings = std::vector<Reading>;
 
     uint lastIndex() const;
     const Reading& lastReading() const;

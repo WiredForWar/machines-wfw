@@ -15,12 +15,12 @@
 
 #include "base/base.hpp"
 #include "base/persist.hpp"
-#include "stdlib/string.hpp"
+
+#include <vector>
 
 // forward refs
 class MachGuiDbIElement;
 class MachGuiDbTextData;
-template <class T> class ctl_vector;
 
 class MachGuiDbElement
 // Canonical form revoked
@@ -58,7 +58,7 @@ public:
     void addDependency(MachGuiDbElement* pAntecedent);
 
     // Get all the other MachGuiDbElement that this one relies on to become available
-    const ctl_vector<MachGuiDbElement*>& antecedents() const;
+    const std::vector<MachGuiDbElement*>& antecedents() const;
 
     // True if all this element's antecedents have been completed
     bool isAvailable() const;

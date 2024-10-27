@@ -32,7 +32,7 @@ public:
 private:
     friend class MachPhysWheels;
 
-    using W4dLinks = ctl_vector<W4dLink*>;
+    using W4dLinks = std::vector<W4dLink*>;
 
     MachPhysWheelsImpl(
         MachPhysMachine* pMachine,

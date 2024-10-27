@@ -155,7 +155,7 @@ std::string MachGuiDbElement::menuString() const
     return str.asString();
 }
 
-const ctl_vector<MachGuiDbElement*>& MachGuiDbElement::antecedents() const
+const std::vector<MachGuiDbElement*>& MachGuiDbElement::antecedents() const
 {
     return pData_->antecedents_;
 }

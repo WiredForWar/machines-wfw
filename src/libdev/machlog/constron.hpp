@@ -38,7 +38,6 @@ class PhysConfigSpace2d;
 class MachLogBuildPoint;
 
 template <class T> class ctl_list;
-template <class T> class ctl_vector;
 
 // Orthodox canonical (revoked)
 class MachLogConstruction : public MachActor
@@ -50,9 +49,9 @@ public:
         HP_STRENGTH_UNALTERED
     };
     using Machines = ctl_list<MachLogMachine*>;
-    using Times = ctl_vector<PhysAbsoluteTime>;
+    using Times = std::vector<PhysAbsoluteTime>;
 
-    using BuildPoints = ctl_pvector<MachLogBuildPoint>;
+    using BuildPoints = std::vector<MachLogBuildPoint*>;
 
     // dtor.
     ~MachLogConstruction() override;
@@ -339,7 +338,7 @@ private:
     // Called on change of state.
     void doVisualiseSelectionState() override;
     // Data members
-    using Entrances = ctl_vector<MachLogEntrance*>;
+    using Entrances = std::vector<MachLogEntrance*>;
     using Constructors = ctl_list<MachLogConstructor*>;
 
     MachLogConstructionImpl* pImpl_;

@@ -7,6 +7,8 @@
 
 #include "machlog/internal/constroi.hpp"
 
+#include "ctl/vector.hpp"
+#include "machlog/buildpnt.hpp"
 #include "machlog/construc.hpp"
 #include "sim/manager.hpp"
 
@@ -64,7 +66,7 @@ void perWrite(PerOstream& ostr, const MachLogConstructionImpl& actorImpl)
     // ostr << actorImpl.pMarker_;
     ostr << actorImpl.constructors_;
     // ostr << actorImpl.machines_;  // machines inserted into buildings as part of machine restore
-    ostr << actorImpl.buildPoints_;
+    perWriteAsPVector(ostr, actorImpl.buildPoints_);
     ostr << actorImpl.needRebuild_;
     ostr << actorImpl.nReservations_;
     ostr << actorImpl.constructionId_;
@@ -86,7 +88,7 @@ void perRead(PerIstream& istr, MachLogConstructionImpl& actorImpl)
     actorImpl.pMarker_ = nullptr;
     istr >> actorImpl.constructors_;
     // istr >> actorImpl.machines_;
-    istr >> actorImpl.buildPoints_;
+    perReadAsPVector(istr, actorImpl.buildPoints_);
     istr >> actorImpl.needRebuild_;
     istr >> actorImpl.nReservations_;
     istr >> actorImpl.constructionId_;

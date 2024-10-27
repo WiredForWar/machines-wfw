@@ -7,7 +7,6 @@
 #include "stdlib/string.hpp"
 
 #include "ctl/map.hpp"
-#include "ctl/vector.hpp"
 #include "ctl/algorith.hpp"
 
 #include "device/timer.hpp"

@@ -69,7 +69,6 @@ class UtlBoundedIdGenerator;
 template <class X> class UtlBoundedIdPMap;
 template <class X> class ctl_list;
 template <class X> class ctl_pvector;
-template <class X> class ctl_vector;
 
 class MachLogRaces
 {
@@ -208,7 +207,7 @@ public:
     ///////////////////////////////
 
     using Squadrons = std::vector<MachLogSquadron*>;
-    using AssemblyPoints = ctl_vector<MexPoint2d>;
+    using AssemblyPoints = std::vector<MexPoint2d>;
 
     using Artefacts = ctl_pvector<MachLogArtefact>;
 

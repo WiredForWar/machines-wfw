@@ -14,9 +14,7 @@
 
 #include "base/base.hpp"
 #include "machlog/constron.hpp"
-#include "machlog/buildpnt.hpp"
 #include "ctl/list.hpp"
-#include "ctl/pvector.hpp"
 
 class MachLogConstructionImpl
 // Canonical form revoked

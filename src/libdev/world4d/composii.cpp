@@ -850,7 +850,7 @@ W4dCompositeImpl::W4dCompositeImpl(PerConstructor)
 void perWrite(PerOstream& ostr, const W4dCompositeImpl& t)
 {
     ostr << t.pComposite_;
-    ostr << t.links_;
+    perWriteAsVector(ostr, t.links_);
     ostr << t.maxLinkId_;
 
     // This is necessary because writing a ctl_pvector* causes a crash
@@ -867,7 +867,7 @@ void perWrite(PerOstream& ostr, const W4dCompositeImpl& t)
 void perRead(PerIstream& istr, W4dCompositeImpl& t)
 {
     istr >> t.pComposite_;
-    istr >> t.links_;
+    perReadAsVector(istr, t.links_);
     istr >> t.maxLinkId_;
 
     bool hasHeldEntities;

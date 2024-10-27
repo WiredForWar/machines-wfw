@@ -257,7 +257,7 @@ void PhysCS2dImpl::trace(std::ostream& o, const PhysCS2dDomainGraph& domainGraph
         if (domainGraph.containsVertex(id))
         {
             const PhysCS2dDomainVertex& domainVertex = domainGraph.vertex(id);
-            const ctl_vector<PhysConfigSpace2d::DomainArcId>& arcs = domainGraph.arcs(id);
+            const std::vector<PhysConfigSpace2d::DomainArcId>& arcs = domainGraph.arcs(id);
 
             indentOstr << "DomainVertex id " << id.asScalar() << " " << domainVertex << " ";
 

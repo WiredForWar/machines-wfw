@@ -17,6 +17,8 @@
 #include "world4d/observer.hpp"
 #include "machphys/machphys.hpp"
 
+#include <vector>
+
 // forward refs
 // class MachLogAggressor;
 // class MachLogAdministrator;
@@ -32,14 +34,11 @@ class MachLogWeapon;
 class MachLogFireData;
 class MachLogCanAttackImpl;
 
-template <class T> class ctl_pvector;
-template <class T> class ctl_vector;
-
 class MachLogCanAttack : public W4dObserver
 {
 public:
-    using Weapons = ctl_pvector<MachLogWeapon>;
-    using Actors = ctl_vector<UtlId>;
+    using Weapons = std::vector<MachLogWeapon*>;
+    using Actors = std::vector<UtlId>;
 
     virtual ~MachLogCanAttack();
 

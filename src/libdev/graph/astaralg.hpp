@@ -16,7 +16,8 @@
 
 #include "base/base.hpp"
 #include "ctl/list.hpp"
-#include "ctl/vector.hpp"
+
+#include <vector>
 
 // GRA_GRAPH IS_A GraGraph
 // VERTEX_MAP IS_A FtlMap mapping GRA_GRAPH::VertexId to GraAStarVertex< GRA_GRAPH >
@@ -30,8 +31,8 @@ public:
     using ArcId = typename Graph::ArcId;
     using Weight = typename Graph::Weight;
     using VertexItem = typename Graph::VertexItem;
-    using Vertices = ctl_vector<VertexId>;
-    using Arcs = ctl_vector<ArcId>;
+    using Vertices = std::vector<VertexId>;
+    using Arcs = std::vector<ArcId>;
 
     // Algorithm state
     enum State

@@ -7,6 +7,8 @@
 
 #include "machlog/internal/canattai.hpp"
 
+#include "ctl/vector.hpp"
+
 #include "sim/manager.hpp"
 
 #include "machlog/actor.hpp"
@@ -59,7 +61,7 @@ void perWrite(PerOstream& ostr, const MachLogCanAttackImpl& actorImpl)
     ostr << actorImpl.pCurrentTarget_;
     ostr << actorImpl.currentlyAttached_;
     ostr << actorImpl.weaponCombo_;
-    ostr << actorImpl.weapons_;
+    perWriteAsPVector(ostr, actorImpl.weapons_);
     ostr << actorImpl.lastFireFrame_;
     ostr << actorImpl.pMe_;
     ostr << actorImpl.minimumInaccuracy_;
@@ -75,7 +77,7 @@ void perRead(PerIstream& istr, MachLogCanAttackImpl& actorImpl)
     istr >> actorImpl.pCurrentTarget_;
     istr >> actorImpl.currentlyAttached_;
     istr >> actorImpl.weaponCombo_;
-    istr >> actorImpl.weapons_;
+    perReadAsPVector(istr, actorImpl.weapons_);
     istr >> actorImpl.lastFireFrame_;
     istr >> actorImpl.pMe_;
     istr >> actorImpl.minimumInaccuracy_;

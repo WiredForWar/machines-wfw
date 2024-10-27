@@ -90,7 +90,7 @@ void perWrite(PerOstream& ostr, const MachPhysMachineImpl& machine)
     ostr << machine.maxRotationAcceleration_;
     ostr << machine.pLocomotionMethod_;
     ostr << machine.pFaceplate_;
-    ostr << machine.shakeLinks_;
+    perWriteAsVector(ostr, machine.shakeLinks_);
     ostr << machine.race_;
     ostr << machine.explosionDataPtr_;
     ostr << machine.bodyLevel_;
@@ -106,7 +106,7 @@ void perRead(PerIstream& istr, MachPhysMachineImpl& machine)
     istr >> machine.maxRotationAcceleration_;
     istr >> machine.pLocomotionMethod_;
     istr >> machine.pFaceplate_;
-    istr >> machine.shakeLinks_;
+    perReadAsVector(istr, machine.shakeLinks_);
     istr >> machine.race_;
     istr >> machine.explosionDataPtr_;
     istr >> machine.bodyLevel_;

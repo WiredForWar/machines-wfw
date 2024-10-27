@@ -75,8 +75,9 @@ void perWrite(PerOstream& ostr, const MachPhysWheelsImpl& wheels)
     ostr << wheels.rightLastAngle_;
     ostr << wheels.leftLastAngleSpeed_;
     ostr << wheels.rightLastAngleSpeed_;
-    ostr << wheels.leftWheels_;
-    ostr << wheels.rightWheels_;
+
+    perWriteAsVector(ostr, wheels.leftWheels_);
+    perWriteAsVector(ostr, wheels.rightWheels_);
 }
 
 void perRead(PerIstream& istr, MachPhysWheelsImpl& wheels)
@@ -91,8 +92,9 @@ void perRead(PerIstream& istr, MachPhysWheelsImpl& wheels)
     istr >> wheels.rightLastAngle_;
     istr >> wheels.leftLastAngleSpeed_;
     istr >> wheels.rightLastAngleSpeed_;
-    istr >> wheels.leftWheels_;
-    istr >> wheels.rightWheels_;
+
+    perReadAsVector(istr, wheels.leftWheels_);
+    perReadAsVector(istr, wheels.rightWheels_);
 }
 
 // virtual

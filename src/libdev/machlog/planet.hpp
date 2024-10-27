@@ -15,6 +15,8 @@
 #include "base/base.hpp"
 #include "machlog/machlog.hpp"
 
+#include <vector>
+
 // Forward declarations
 class IProgressReporter;
 class MexTransform3d;
@@ -34,7 +36,6 @@ class W4dSceneManager;
 class PhysConfigSpace2d;
 class UtlLineTokeniser;
 class MachLogPlanetImpl;
-template <class X> class ctl_pvector;
 
 // singleton
 class MachLogPlanet
@@ -82,8 +83,8 @@ public:
 
     void CLASS_INVARIANT;
 
-    using Sites = ctl_pvector<MachLogMineralSite>;
-    using DebrisSites = ctl_pvector<MachLogDebris>;
+    using Sites = std::vector<MachLogMineralSite*>;
+    using DebrisSites = std::vector<MachLogDebris*>;
 
     const Sites& sites() const;
     const DebrisSites& debrisSites() const;

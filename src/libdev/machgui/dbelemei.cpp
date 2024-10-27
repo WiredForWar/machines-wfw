@@ -8,6 +8,9 @@
 #include "machgui/internal/dbelemei.hpp"
 #include "machgui/dbelemen.hpp"
 
+#include "ctl/vector.hpp"
+#include "stdlib/string.hpp"
+
 PER_DEFINE_PERSISTENT(MachGuiDbIElement);
 
 MachGuiDbIElement::MachGuiDbIElement()
@@ -41,7 +44,7 @@ std::ostream& operator<<(std::ostream& o, const MachGuiDbIElement& t)
 
 void perWrite(PerOstream& ostr, const MachGuiDbIElement& ob)
 {
-    ostr << ob.antecedents_;
+    perWriteAsVector(ostr, ob.antecedents_);
     ostr << ob.menuStringId_;
     ostr << ob.name_;
     ostr << ob.textDataFileName_;
@@ -49,7 +52,7 @@ void perWrite(PerOstream& ostr, const MachGuiDbIElement& ob)
 
 void perRead(PerIstream& istr, MachGuiDbIElement& ob)
 {
-    istr >> ob.antecedents_;
+    perReadAsVector(istr, ob.antecedents_);
     istr >> ob.menuStringId_;
     istr >> ob.name_;
     istr >> ob.textDataFileName_;

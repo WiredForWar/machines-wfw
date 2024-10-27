@@ -10,6 +10,7 @@
 #include "gui/internal/fontcore.hpp"
 #include "base/diag.hpp"
 #include "base/persist.hpp"
+#include "ctl/vector.hpp"
 
 PER_DEFINE_PERSISTENT(GuiBmpFontCoreCharData);
 

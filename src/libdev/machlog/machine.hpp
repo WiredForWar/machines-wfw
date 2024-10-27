@@ -46,7 +46,7 @@ class MachLogMachine
 // canonical form revoked
 {
 public:
-    using Actors = ctl_vector<UtlId>;
+    using Actors = MachActor::Actors;
     using Machines = ctl_pvector<MachLogMachine>;
     using Level = int; // Machine ability level
 

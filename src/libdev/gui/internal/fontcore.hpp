@@ -3,7 +3,6 @@
 
 #include "gui/gui.hpp"
 #include "system/pathname.hpp"
-#include "ctl/vector.hpp"
 
 struct GuiBmpFontCoreCharData
 {
@@ -26,7 +25,7 @@ public:
     bool endOfChar(int);
 
     GuiBitmap fontBmp_;
-    ctl_vector<GuiBmpFontCoreCharData> charData_;
+    std::vector<GuiBmpFontCoreCharData> charData_;
     SysPathName fontPath_;
     size_t coreCount_;
     size_t maxCharWidth_;

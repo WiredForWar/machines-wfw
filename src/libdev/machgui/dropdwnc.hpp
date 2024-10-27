@@ -13,7 +13,6 @@
 #define _MACHGUI_DROPDWNC_HPP
 
 #include "base/base.hpp"
-#include "ctl/vector.hpp"
 #include "gui/displaya.hpp"
 #include "gui/restring.hpp"
 #include "gui/root.hpp"
@@ -110,7 +109,7 @@ protected:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         MachGuiDropDownListBoxCreator*);
 
 private:
@@ -146,7 +145,7 @@ public:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         MachGuiDropDownListBoxCreator*);
 
     MachGuiDropDownList(
@@ -156,7 +155,7 @@ public:
         size_t verticalSpacing,
         size_t scrollInc,
         size_t itemWidth,
-        const ctl_vector<std::string>& itemText,
+        const std::vector<std::string>& itemText,
         MachGuiDropDownListBoxCreator*,
         bool whiteFont);
 

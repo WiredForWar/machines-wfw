@@ -7,7 +7,6 @@
 #define _GUI_ICONSEQ_HPP
 
 #include "gui/displaya.hpp"
-#include "ctl/vector.hpp"
 
 /* //////////////////////////////////////////////////////////////// */
 
@@ -18,7 +17,7 @@ class GuiIconSequence : public GuiDisplayable
 // cannonical from revoked
 {
 public:
-    using Coords = ctl_vector<Gui::Coord>;
+    using Coords = std::vector<Gui::Coord>;
 
     GuiIconSequence(GuiDisplayable* pParent, const Gui::Box& rel, const Coords& coords);
 
@@ -110,8 +109,8 @@ private:
 
     virtual void doUpdate(unsigned nFixedChildren, unsigned nActiveChildren);
 
-    using ActiveChildren = ctl_vector<GuiDisplayable*>;
-    using FixedChildren = ctl_vector<GuiDisplayable*>;
+    using ActiveChildren = std::vector<GuiDisplayable*>;
+    using FixedChildren = std::vector<GuiDisplayable*>;
 
     GuiIconSequenceImpl* pImpl_;
 

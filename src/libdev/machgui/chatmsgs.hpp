@@ -19,7 +19,6 @@
 #include <vector>
 
 template <class T> class ctl_list;
-template <class T> class ctl_vector;
 
 struct MachGuiInGameChatMessagesImpl;
 class MachGuiMessageBroker;
