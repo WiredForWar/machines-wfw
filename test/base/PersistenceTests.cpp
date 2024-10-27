@@ -183,6 +183,33 @@ TEST(PersistenceTests, ReadWriteIntCTLVector)
         EXPECT_EQ(data[0], referenceData[0]);
         EXPECT_EQ(data[1], referenceData[1]);
     }
+
+    {
+        std::ostringstream ofstr(std::ios::binary);
+        PerOstream ostr(ofstr);
+
+        std::vector<int> data {
+            referenceData[0],
+            referenceData[1],
+        };
+        perWriteAsVector(ostr, data);
+
+        EXPECT_EQ(ofstr.view().size(), buf.rdbuf()->view().size());
+        EXPECT_EQ(std::string_view(buffer, sizeof(buffer)), ofstr.view());
+    }
+
+    {
+        buf.seekg(0);
+        PerIstream istr(buf);
+
+        std::vector<int> data;
+        perReadAsVector(istr, data);
+
+        EXPECT_EQ(data.size(), referenceData.size());
+        ASSERT_EQ(data.size(), 2);
+        EXPECT_EQ(data[0], referenceData[0]);
+        EXPECT_EQ(data[1], referenceData[1]);
+    }
 }
 
 TEST(PersistenceTests, ReadWriteIntPointersCTLVector)
@@ -260,6 +287,38 @@ TEST(PersistenceTests, ReadWriteIntPointersCTLVector)
             delete p;
         }
     }
+
+    {
+        std::ostringstream ofstr(std::ios::binary);
+        PerOstream ostr(ofstr);
+
+        std::vector<int*> data {
+            &referenceData[0],
+            &referenceData[1],
+        };
+        perWriteAsVector(ostr, data);
+
+        EXPECT_EQ(ofstr.view().size(), buf.rdbuf()->view().size());
+        EXPECT_EQ(std::string_view(buffer, sizeof(buffer)), ofstr.view());
+    }
+
+    {
+        buf.seekg(0);
+        PerIstream istr(buf);
+
+        std::vector<int*> data;
+        perReadAsVector(istr, data);
+
+        EXPECT_EQ(data.size(), referenceData.size());
+        ASSERT_EQ(data.size(), 2);
+        EXPECT_EQ(*data[0], referenceData[0]);
+        EXPECT_EQ(*data[1], referenceData[1]);
+
+        for (auto* p : data)
+        {
+            delete p;
+        }
+    }
 }
 
 TEST(PersistenceTests, ReadWriteIntCTLPVector)
@@ -320,6 +379,38 @@ TEST(PersistenceTests, ReadWriteIntCTLPVector)
 
         ctl_pvector<int> data;
         istr >> data;
+
+        EXPECT_EQ(data.size(), referenceData.size());
+        ASSERT_EQ(data.size(), 2);
+        EXPECT_EQ(*data[0], referenceData[0]);
+        EXPECT_EQ(*data[1], referenceData[1]);
+
+        for (auto* p : data)
+        {
+            delete p;
+        }
+    }
+
+    {
+        std::ostringstream ofstr(std::ios::binary);
+        PerOstream ostr(ofstr);
+
+        std::vector<int*> data {
+            &referenceData[0],
+            &referenceData[1],
+        };
+        perWriteAsPVector(ostr, data);
+
+        EXPECT_EQ(ofstr.view().size(), buf.rdbuf()->view().size());
+        EXPECT_EQ(std::string_view(buffer, sizeof(buffer)), ofstr.view());
+    }
+
+    {
+        buf.seekg(0);
+        PerIstream istr(buf);
+
+        std::vector<int*> data;
+        perReadAsPVector(istr, data);
 
         EXPECT_EQ(data.size(), referenceData.size());
         ASSERT_EQ(data.size(), 2);
