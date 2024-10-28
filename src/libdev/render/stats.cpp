@@ -4,12 +4,14 @@
  */
 
 #include "render/stats.hpp"
-#include <stdio.h>
 #include "ctl/list.hpp"
 
 #ifndef _INLINE
 #include "render/stats.ipp"
 #endif
+
+#include <inttypes.h>
+#include <stdio.h>
 
 RenStats::RenStats()
     : show_(true)
@@ -34,7 +36,7 @@ RenStats::~RenStats()
     if (file)
     {
         fprintf(file, "Total time=%f\n", totalTime);
-        fprintf(file, "Total frames=%lu\n", totalFrames);
+        fprintf(file, "Total frames=%" PRIu32 "\n", totalFrames);
 
         const double av = totalTime / totalFrames;
         fprintf(file, "Average frame rate=%f\n", av);

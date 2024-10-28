@@ -108,8 +108,8 @@ void MachPhysTileData::makeCellLists()
 {
     // get useful data
     size_t nTriangles = triangles_.size();
-    size_t nXCells = nXVertices_ - 1;
-    size_t nYCells = nYVertices_ - 1;
+    int nXCells = nXVertices_ - 1;
+    int nYCells = nYVertices_ - 1;
 
     // Construct the temporary working structure
     pWorkingData_ = new WorkingData;
@@ -133,7 +133,7 @@ void MachPhysTileData::makeCellLists()
         const MexPoint3d& p3 = vertices_[t.v3()];
 
         // Initialise the min/max vectors with suitable values
-        for (size_t j = 0; j != nYCells; ++j)
+        for (int j = 0; j != nYCells; ++j)
         {
             xMinCell.push_back(nXCells);
             xMaxCell.push_back(-1);
@@ -178,7 +178,7 @@ void MachPhysTileData::makeCellLists()
     {
         for (int x = 0; x != nXCells; ++x)
         {
-            int nTrianglesOverCell = 0;
+            ushort nTrianglesOverCell = 0;
             int j = 0;
             for (TriangleId id = 0; id != nTriangles; ++id)
             {
@@ -447,7 +447,6 @@ bool MachPhysTileData::setMinMaxCellData(MachPhysTileData&, int xCell, int yCell
 bool MachPhysTileData::intersectsLine(const MexLine3d& line, MATHEX_SCALAR* pDistance) const
 {
     // JON_STREAM("MachPhysTileData::intersectsLine entry " << line.end1() << " to " << line.end2() << std::endl;)
-    bool result = false;
 
     // Cache the line data, and initialise the return data
     testLine_ = line;
@@ -541,7 +540,7 @@ std::ostream& operator<<(std::ostream& o, const MachPhysTileData& t)
         for (int x = 0; x < t.nXVertices_ - 1; ++x)
         {
             o << "  (" << x << "," << y << ")";
-            ushort count = (ushort)(t.cellCounts_[j++] - cumulativeCount);
+            ushort count = t.cellCounts_[j++] - cumulativeCount;
             cumulativeCount += count;
             while (count--)
                 o << " " << t.cellTriangleLists_[k++];
@@ -587,8 +586,8 @@ MATHEX_SCALAR MachPhysTileData::height(MATHEX_SCALAR x, MATHEX_SCALAR y, MexVec3
     // Compute which cell the location is over
     int nXCells = nXVertices_ - 1;
     int nYCells = nYVertices_ - 1;
-    int xCell = (int)((x - xMin) / ((xMax - xMin) / nXCells));
-    int yCell = (int)((y - yMin) / ((yMax - yMin) / nYCells));
+    int xCell = (x - xMin) / ((xMax - xMin) / nXCells);
+    int yCell = (y - yMin) / ((yMax - yMin) / nYCells);
     if (xCell >= nXCells)
         xCell = nXCells - 1;
     if (yCell >= nYCells)
@@ -819,9 +818,9 @@ bool MachPhysTileData::profileValid(const Profile& profile) const
             PATH_PROFILE_INSPECT(point1);
             PATH_PROFILE_INSPECT(point2);
 
-            if (xyDistance < (MATHEX_SCALAR)MexEpsilon::instance())
+            if (xyDistance < MexEpsilon::instance())
             {
-                if (fabs(point1.z() - point2.z()) > (MATHEX_SCALAR)MexEpsilon::instance())
+                if (fabs(point1.z() - point2.z()) > MexEpsilon::instance())
                 {
                     result = false;
                     ASSERT_INFO("Vertical move");

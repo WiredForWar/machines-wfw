@@ -93,9 +93,9 @@ private:
         Triangle()
             : j_(0) {};
 
-        size_t v1() const { return (size_t)(j_ >> 16); };
-        size_t v2() const { return (size_t)((j_ >> 8) & 255); };
-        size_t v3() const { return (size_t)(j_ & 255); };
+        uint32 v1() const { return (j_ >> 16); };
+        uint32 v2() const { return ((j_ >> 8) & 255); };
+        uint32 v3() const { return (j_ & 255); };
 
         PER_MEMBER_PERSISTENT_DEFAULT_INLINE(Triangle);
         PER_FRIEND_READ_WRITE(Triangle);

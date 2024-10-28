@@ -634,7 +634,7 @@ bool MachLogEnterBuildingOperation::beNotified(W4dSubject* pSubject, W4dSubject:
     {
         case W4dSubject::DELETED:
             {
-                if ((W4dSubject*)pConstruction_ == pSubject)
+                if (pConstruction_ == pSubject)
                 {
                     currentlyAttached_ = false;
                     pActor_->stationLocked(nullptr);
@@ -1154,7 +1154,7 @@ bool MachLogLeaveBuildingOperation::beNotified(W4dSubject* pSubject, W4dSubject:
     switch (event)
     {
         case W4dSubject::DELETED:
-            if ((W4dSubject*)pConstruction_ == pSubject)
+            if (pConstruction_ == pSubject)
             {
                 currentlyAttached_ = false;
                 pActor_->stationLocked(nullptr);

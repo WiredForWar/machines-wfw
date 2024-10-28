@@ -151,10 +151,10 @@ void AniSmackerRegular::playNextFrame(RenDevice* pDevice)
             alFormat_ = toALformat(a_channels[0], a_bitdepth[0]);
             alFrequency_ = a_rate[0];
 
-            alGenSources((ALuint)1, &alSource_);
+            alGenSources(1, &alSource_);
             alTestError("gen source smacker");
             alSourcef(alSource_, AL_PITCH, 1);
-            ALfloat fVol = (float)SndMixer::instance().masterSampleVolume() / 100.0f;
+            ALfloat fVol = SndMixer::instance().masterSampleVolume() / 100.0f;
             alSourcef(alSource_, AL_GAIN, fVol);
             alSource3f(alSource_, AL_VELOCITY, 0, 0, 0);
             // alSourcei(alSource_, AL_LOOPING, AL_TRUE);
@@ -272,7 +272,7 @@ void AniSmackerRegular::displaySummaryInfo() const
     unsigned long f;
     smk_info_all(pSmack_, nullptr, &f, &usf);
     printf(
-        "Opened file %s\nWidth: %lu\nHeight: %lu\nFrames: %lu\nFPS: %f\n",
+        "Opened file %s\nWidth: %d\nHeight: %d\nFrames: %lu\nFPS: %f\n",
         fileName_.pathname().c_str(),
         width_,
         height_,
@@ -338,9 +338,9 @@ uint* AniSmackerRegular::fillBufferForCurrentFrame()
 
     // Fill image buffer
     unsigned int pixel = 0;
-    for (unsigned int i = 0; i < height_; ++i)
+    for (int i = 0; i < height_; ++i)
     {
-        for (unsigned int j = 0; j < width_; ++j)
+        for (int j = 0; j < width_; ++j)
         {
             img_buff[pixel] = col_palette[image_data[i * width_ + j]];
             ++pixel;

@@ -73,11 +73,8 @@ private:
     Status status_;
     bool buildingGone_{};
     bool currentlyAttached_{};
-    bool needToGetAStation_; // obsolete
-    bool needToLockAStation_; // obsolete
     int stationType_{};
     bool ignoreNeedToClearEntrancePolygon_{};
-    bool needToIgnoreInteriorPolygon_; // obsolete
 };
 
 PER_DECLARE_PERSISTENT(MachLogEnterBuildingOperation);
@@ -129,11 +126,7 @@ private:
     Status status_;
     bool buildingGone_{};
     bool currentlyAttached_{};
-    bool needToGetAStation_; // obsolete
-    bool needToLockAStation_; // obsolete
     int stationType_{};
-    bool needToIgnoreExteriorPolygon_; // obsolete
-    bool needToIgnoreInteriorPolygon_; // obsolete
 };
 
 PER_DECLARE_PERSISTENT(MachLogLeaveBuildingOperation);
