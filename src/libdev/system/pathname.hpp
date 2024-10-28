@@ -18,12 +18,10 @@
 #include "base/persist.hpp"
 #include "base/tracker.hpp"
 
-#include "stdlib/string.hpp"
-#include <cstring>
+#include <string>
+#include <vector>
 
 //////////////////////////////////////////////////////////////////////
-
-template <class T> class ctl_vector;
 
 class SysPathNameImpl;
 
@@ -33,13 +31,16 @@ class SysPathName
 {
 public:
     // This forces client files to include std::string and ctl_vector.
-    using Components = ctl_vector<std::string>;
+    using Components = std::vector<std::string>;
 
     SysPathName();
     // POST( not set() );
-    SysPathName(const char* path);
-    // POST( set() );
     SysPathName(const std::string& path);
+    // POST( set() );
+    SysPathName(const char* path)
+        : SysPathName(std::string(path))
+    {
+    }
     // POST( set() );
     SysPathName(const SysPathName& path);
     // POST( set() == path,set() );

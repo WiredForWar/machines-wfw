@@ -7,6 +7,7 @@
 
 #include "base/error.hpp"
 #include "ctl/vector.hpp"
+#include "stdlib/string.hpp"
 
 #include "system/pathname.hpp"
 #include "system/internal/pathnami.hpp"
@@ -18,14 +19,14 @@
 #include <cctype>
 
 #define CB_SYS_PATHNAME_DEPIMPL                                                                                        \
-    CB_DEPIMPL(std::string, pathname_);                                                                                     \
-    CB_DEPIMPL(std::string, fullPathname_);                                                                                 \
-    CB_DEPIMPL(ctl_vector<std::string>, components_);                                                                       \
-    CB_DEPIMPL(bool, set_);                                                                                            \
-    CB_DEPIMPL(size_t, rootId_);                                                                                       \
-    CB_DEPIMPL(bool, fullPathnameSet_);                                                                                \
-    CB_DEPIMPL(bool, componentsSet_);                                                                                  \
-    CB_DEPIMPL(bool, containsCapitals_);
+    CB_DEPIMPL_AUTO(pathname_);                                                                                        \
+    CB_DEPIMPL_AUTO(fullPathname_);                                                                                    \
+    CB_DEPIMPL_AUTO(components_);                                                                                      \
+    CB_DEPIMPL_AUTO(set_);                                                                                             \
+    CB_DEPIMPL_AUTO(rootId_);                                                                                          \
+    CB_DEPIMPL_AUTO(fullPathnameSet_);                                                                                 \
+    CB_DEPIMPL_AUTO(componentsSet_);                                                                                   \
+    CB_DEPIMPL_AUTO(containsCapitals_);
 
 // Used in the persistence functions.
 #define CB_FRIEND_DEPIMPL(type, name, objectRef)                                                                       \
@@ -46,35 +47,9 @@ SysPathName::SysPathName()
 {
     CB_SYS_PATHNAME_DEPIMPL;
 
-    set_ = false;
-    fullPathnameSet_ = false;
-    componentsSet_ = false;
-    rootId_ = 0;
-    containsCapitals_ = false;
-
     LOG_CONSTRUCTION;
 
     POST(! set());
-}
-
-SysPathName::SysPathName(const char* path)
-
-    : pImpl_(new SysPathNameImpl())
-{
-    CB_SYS_PATHNAME_DEPIMPL;
-
-    LOG_CONSTRUCTION;
-
-    pathname_ = path;
-    set_ = true;
-    fullPathnameSet_ = false;
-    componentsSet_ = false;
-    rootId_ = 0;
-    containsCapitals_ = checkForCapitals(std::string(path));
-
-    createComponents();
-
-    POST(set());
 }
 
 SysPathName::SysPathName(const std::string& path)
@@ -86,9 +61,6 @@ SysPathName::SysPathName(const std::string& path)
 
     pathname_ = path;
     set_ = true;
-    fullPathnameSet_ = false;
-    componentsSet_ = false;
-    rootId_ = 0;
     containsCapitals_ = checkForCapitals(path);
 
     createComponents();
@@ -527,7 +499,7 @@ std::string SysPathName::directory() const
     std::string result;
     bool finished = false;
 
-    for (Components::const_iterator i = components_.begin(); ! finished; ++i)
+    for (Components::const_iterator i = components_.begin(); !finished; ++i)
     {
         Components::const_iterator j = i;
         ++j;
@@ -535,7 +507,7 @@ std::string SysPathName::directory() const
         if (j == components_.end())
             finished = true;
 
-        if (! finished)
+        if (!finished)
         {
             result += (*i);
 
