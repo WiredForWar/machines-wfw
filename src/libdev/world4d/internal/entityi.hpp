@@ -19,7 +19,7 @@
 #include "mathex/t3dkey.hpp"
 #include "mathex/double.hpp"
 #include "phys/phys.hpp"
-#include "render/fwmatmap.hpp"
+#include "render/matmap.hpp"
 #include "render/render.hpp"
 #include "world4d/world4d.hpp"
 #include "ctl/vector.hpp"

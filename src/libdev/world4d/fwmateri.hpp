@@ -12,14 +12,11 @@
 
 #include "render/render.hpp"
 #include "render/material.hpp"
+#include "render/matmap.hpp"
 
 template <class T> class ctl_vector;
 template <class KEY, class COMPARE> class ctl_set;
 template <class KEY, class T, class COMPARE> class ctl_map;
-
-// Duplicates matmap.hpp declarations
-using RenMaterialSet = ctl_set<RenMaterial, RenMaterial::Less>;
-using RenMaterialMap = ctl_map<RenMaterial, RenMaterial, RenMaterial::Less>;
 
 using W4dMaterialVecPtrs = ctl_vector<Ren::MaterialVecPtr>;
 class W4dMaterialVecPtr_SetLess;

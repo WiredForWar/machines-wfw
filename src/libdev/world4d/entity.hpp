@@ -16,8 +16,8 @@
 #include "base/tracker.hpp"
 #include "base/persist.hpp"
 #include "phys/phys.hpp"
+#include "render/matmap.hpp"
 #include "render/render.hpp"
-#include "render/fwmatmap.hpp"
 #include "world4d/world4d.hpp"
 #include "world4d/fwrdplan.hpp"
 

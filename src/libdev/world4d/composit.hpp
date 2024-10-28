@@ -15,7 +15,7 @@
 #include "base/base.hpp"
 #include "base/persist.hpp"
 #include "phys/phys.hpp"
-#include "render/fwmatmap.hpp"
+#include "render/matmap.hpp"
 #include "world4d/fwrdplan.hpp"
 #include "world4d/entity.hpp"
 

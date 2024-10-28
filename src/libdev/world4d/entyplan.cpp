@@ -19,8 +19,7 @@
 #include "world4d/uvplan.hpp"
 #include "world4d/internal/pendplan.hpp"
 
-#include "render/material.hpp"
-#include "render/fwmatmap.hpp"
+#include "render/matmap.hpp"
 #include "render/scale.hpp"
 
 #include "phys/rampacce.hpp"

@@ -42,7 +42,6 @@ set(RENDER_SOURCES
     envirnmt.hpp
     fixpt.cpp
     fixptvec.cpp
-    fwmatmap.hpp
     glmath.cpp
     gxmeshload.cpp
     hierbuil.cpp

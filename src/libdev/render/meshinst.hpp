@@ -10,9 +10,8 @@
 #include "base/persist.hpp"
 #include "ctl/countptr.hpp"
 #include "mathex/abox3d.hpp"
+#include "render/matmap.hpp"
 #include "render/render.hpp"
-#include "render/fwmatmap.hpp"
-#include "render/material.hpp"
 
 // template <class T> class basic_string;
 // typedef basic_string< char > string;
