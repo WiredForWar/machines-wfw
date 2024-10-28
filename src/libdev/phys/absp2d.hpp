@@ -148,14 +148,14 @@ private:
 
     // Data members
     MexAlignedBox2d boundary_; // The outer boundary of the space
-    Partition* pTopPartition_; // Partition for whole space
+    Partition* pTopPartition_{}; // Partition for whole space
     MATHEX_SCALAR minResolution_; // The minimum resolution for partitioning
     MATHEX_SCALAR lipSize_; // The amount by which left/right partitions are to be extended
                             // so that objects on the boundary tend to fall in at least one
                             // of the sub-partitions.
     size_t nMaxItems_; // The maximum number of items that would ideally
                        //  be stored in a partition
-    size_t nItems_; // Count of items stored in the tree
+    size_t nItems_{}; // Count of items stored in the tree
 };
 
 // #ifdef _INSTANTIATE_TEMPLATE_CLASSES

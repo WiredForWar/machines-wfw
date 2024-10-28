@@ -27,9 +27,7 @@ PhysAlignedBSPTree2d<P_ITEM>::PhysAlignedBSPTree2d(
     : boundary_(minCorner, maxCorner)
     , minResolution_(minResolution)
     , nMaxItems_(nMaxItems)
-    , pTopPartition_(nullptr)
     , lipSize_(lipSize)
-    , nItems_(0)
 {
     PRE(minCorner.x() < maxCorner.x())
     PRE(minCorner.y() < maxCorner.y())

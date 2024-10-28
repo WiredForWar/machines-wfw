@@ -51,9 +51,6 @@ MachLogEnterBuildingOperation::MachLogEnterBuildingOperation(
     , pStation_(pStation)
     , status_(CLEAR)
     , currentlyAttached_(true)
-    , buildingGone_(false)
-    , ignoreNeedToClearEntrancePolygon_(false)
-    , stationType_(0)
 
 {
     PRE_INFO("Actor trying to enter building: " << pActor->id() << std::endl);
@@ -75,9 +72,6 @@ MachLogEnterBuildingOperation::MachLogEnterBuildingOperation(
     , pStation_(pStation)
     , status_(CLEAR)
     , currentlyAttached_(true)
-    , buildingGone_(false)
-    , ignoreNeedToClearEntrancePolygon_(false)
-    , stationType_(0)
 
 {
     PRE_INFO("Actor trying to enter building: " << pActor->id() << std::endl);
@@ -756,10 +750,8 @@ MachLogLeaveBuildingOperation::MachLogLeaveBuildingOperation(
     , pActor_(pActor)
     , pConstruction_(pConstr)
     , pStation_(pStation)
-    , currentlyAttached_(true)
-    , buildingGone_(false)
-    , stationType_(0)
     , status_(STATION)
+    , currentlyAttached_(true)
 {
     pConstruction_->attach(this);
 }

@@ -13,13 +13,8 @@
 
 RenStats::RenStats()
     : show_(true)
-    , frameCount_(0)
     , updateInterval_(0.333)
     , frameTimes_(new ctl_list<double>)
-    , averageTime_(0)
-    , polygonsDrawn_(0)
-    , linesDrawn_(0)
-    , pointsDrawn_(0)
     , maxQueueLength_(10)
 {
     TEST_INVARIANT;

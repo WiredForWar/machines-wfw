@@ -67,20 +67,24 @@ private:
     void computeAverage();
 
     bool show_;
-    uint32_t frameCount_;
+    uint32_t frameCount_{};
 
     DevTimer updateTimer_;
     uint32_t framesSinceUpdate_{};
-    double updateInterval_;
+    double updateInterval_{};
 
     DevTimer frameTimer_;
     ctl_list<double>* frameTimes_;
-    double averageTime_;
+    double averageTime_{};
     // Warning: different from 1/averageFrameTime_
     double frameRate_;
     size_t maxQueueLength_;
 
-    uint32_t polygonsDrawn_, linesDrawn_, TTFsDrawn_, STFsDrawn_, pointsDrawn_;
+    uint32_t polygonsDrawn_{};
+    uint32_t linesDrawn_{};
+    uint32_t TTFsDrawn_{};
+    uint32_t STFsDrawn_{};
+    uint32_t pointsDrawn_{};
 
     BaseLogBuffer stream_;
     std::string text_;

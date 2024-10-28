@@ -15,10 +15,7 @@
 #include "render/colour.hpp"
 #include "render/matvec.hpp"
 
-#include "sim/manager.hpp"
-
 #include "world4d/entyplan.hpp"
-#include "world4d/manager.hpp"
 #include "world4d/visplan.hpp"
 #include "world4d/matfrmpl.hpp"
 
@@ -38,8 +35,8 @@ MachPhysFlame::MachPhysFlame(
     const PhysAbsoluteTime& startTime,
     const PhysRelativeTime& duration)
     : W4dSprite3d(pParent, localTransform, width, height, initialMaterial(flameType))
-    , flameType_(flameType)
     , duration_(duration)
+    , flameType_(flameType)
 {
     // The current model is all black with emissive flames and things.  Hence,
     // it should not need lighting.  This could change if the model changes.
@@ -59,8 +56,8 @@ MachPhysFlame::MachPhysFlame(
     MATHEX_SCALAR dOffset,
     const PhysRelativeTime& duration)
     : W4dSprite3d(pParent, localTransform, size, size, initialMaterial(flameType))
-    , flameType_(flameType)
     , duration_(duration)
+    , flameType_(flameType)
 {
     // The current model is all black with emissive flames and things.  Hence,
     // it should not need lighting.  This could change if the model changes.
@@ -79,8 +76,8 @@ MachPhysFlame::MachPhysFlame(
     MATHEX_SCALAR dOffset,
     const PhysRelativeTime& duration)
     : W4dSprite3d(pParent, localTransform, width, height, initialMaterial(flameType))
-    , flameType_(flameType)
     , duration_(duration)
+    , flameType_(flameType)
 {
     // The current model is all black with emissive flames and things.  Hence,
     // it should not need lighting.  This could change if the model changes.

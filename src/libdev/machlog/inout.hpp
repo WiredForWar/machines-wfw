@@ -71,12 +71,12 @@ private:
 
     PER_FRIEND_ENUM_PERSISTENT(Status);
     Status status_;
-    bool buildingGone_;
-    bool currentlyAttached_;
+    bool buildingGone_{};
+    bool currentlyAttached_{};
     bool needToGetAStation_; // obsolete
     bool needToLockAStation_; // obsolete
-    int stationType_;
-    bool ignoreNeedToClearEntrancePolygon_;
+    int stationType_{};
+    bool ignoreNeedToClearEntrancePolygon_{};
     bool needToIgnoreInteriorPolygon_; // obsolete
 };
 
@@ -127,11 +127,11 @@ private:
 
     PER_FRIEND_ENUM_PERSISTENT(Status);
     Status status_;
-    bool buildingGone_;
-    bool currentlyAttached_;
+    bool buildingGone_{};
+    bool currentlyAttached_{};
     bool needToGetAStation_; // obsolete
     bool needToLockAStation_; // obsolete
-    int stationType_;
+    int stationType_{};
     bool needToIgnoreExteriorPolygon_; // obsolete
     bool needToIgnoreInteriorPolygon_; // obsolete
 };
