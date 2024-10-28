@@ -325,7 +325,7 @@ int MachPhysTileData::cellsUnderLine(const MexPoint3d& p1, const MexPoint3d& p2,
                 // Move to the next y cell
                 yCell = yNextCell;
                 yNextCell += iy;
-                by = by = fabs((yNextCell + jy) * yCellSize - y0);
+                by = fabs((yNextCell + jy) * yCellSize - y0);
                 if (by > ay)
                     by = ay;
                 cx = f * by;
