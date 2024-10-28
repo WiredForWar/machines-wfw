@@ -7,7 +7,6 @@
 #include <stdio.h>
 
 #include "ctl/bitvec.hpp"
-#include "ctl/set.hpp"
 
 #include "base/diag.hpp"
 #include "mathex/grid2d.hpp"

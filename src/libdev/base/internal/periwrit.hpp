@@ -14,15 +14,15 @@
 #define _BASE_PERIWRIT_HPP
 
 #include "base/base.hpp"
-#include "base/lessptr.hpp"
 #include "base/private/pertypes.hpp"
 #include "base/private/indent.hpp"
 #include "base/internal/persist.hpp"
 #include "base/private/persist.hpp"
 #include "base/internal/perolog.hpp"
 #include "ctl/map.hpp"
-#include "ctl/set.hpp"
+
 #include <cstring>
+#include <set>
 
 class PerOstream;
 
@@ -117,8 +117,8 @@ private:
     void writeAddress(const void* ptr) const;
 
     using PointerToIdMap = ctl_map<PerMapPtrType, PerIdentifier, std::less<PerMapPtrType>>;
-    using Pointers = ctl_set<const void*, less_ptr<const void>>;
-    using Objects = ctl_set<PersistenceObjectLog, std::less<PersistenceObjectLog>>;
+    using Pointers = std::set<const void*>;
+    using Objects = std::set<PersistenceObjectLog>;
 
     using WriteFnMap = ctl_map<std::string, PerWriteFnPtr, std::less<std::string>>;
 

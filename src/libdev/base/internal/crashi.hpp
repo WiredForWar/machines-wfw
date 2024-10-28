@@ -13,13 +13,12 @@
 #ifndef _BASE_CRASHI_HPP
 #define _BASE_CRASHI_HPP
 
-#include <iostream>
-
 #include "base/base.hpp"
-#include "base/lessptr.hpp"
 
 #include "ctl/vector.hpp"
-#include "ctl/set.hpp"
+
+#include <iostream>
+#include <set>
 
 class BaseCrashInternal
 // Canonical form revoked
@@ -55,7 +54,7 @@ private:
     ctl_vector<PFn> functions_;
 
     //  Streams to be closed in the event of a crash
-    using Streams = ctl_set<std::ofstream*, less_ptr<std::ofstream>>;
+    using Streams = std::set<std::ofstream*>;
     Streams streams_;
 };
 

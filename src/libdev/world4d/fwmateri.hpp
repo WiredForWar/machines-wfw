@@ -15,7 +15,6 @@
 #include "render/matmap.hpp"
 
 template <class T> class ctl_vector;
-template <class KEY, class COMPARE> class ctl_set;
 template <class KEY, class T, class COMPARE> class ctl_map;
 
 using W4dMaterialVecPtrs = ctl_vector<Ren::MaterialVecPtr>;
@@ -23,7 +22,7 @@ class W4dMaterialVecPtr_SetLess;
 
 // A set of counted pointers to material vectors, sorted on the material vector value
 // rather than pointer address.
-using W4dMaterialVecPtrSet = ctl_set<Ren::MaterialVecPtr, W4dMaterialVecPtr_SetLess>;
+using W4dMaterialVecPtrSet = std::set<Ren::MaterialVecPtr>;
 
 #endif
 

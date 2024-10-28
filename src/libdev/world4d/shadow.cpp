@@ -90,7 +90,7 @@ void W4dShadow::applyShadowMaterial(W4dEntity* entity)
     for (RenMaterialSet::iterator i = materials.begin(); i != materials.end(); ++i)
     {
         const RenMaterial newMat = shadowMaterial();
-        newMaterialMap.insert(*i, newMat);
+        newMaterialMap.insert({ *i, newMat });
     }
 
     entity->materialMap(newMaterialMap);

@@ -62,7 +62,7 @@ void MachPhysMaterialConverter::convert(W4dComposite* comp) const
         RenMaterial material = *i;
 
         if (convert(&material))
-            newMaterialMap.insert(*i, material);
+            newMaterialMap.insert({ *i, material });
     }
 
     // comp->materialMap( newMaterialMap );

@@ -13,9 +13,8 @@
 #define _BASE_TRACKERI_HPP
 
 #include "base/base.hpp"
-#include "base/lessptr.hpp"
 
-#include "ctl/set.hpp"
+#include <set>
 
 class DiagPointerTrackerImpl
 {
@@ -42,7 +41,7 @@ private:
     // Operation deliberately revoked
     bool operator==(const DiagPointerTrackerImpl&);
 
-    ctl_set<void*, less_ptr<void>> pointers_;
+    std::set<void*> pointers_;
 };
 
 #endif

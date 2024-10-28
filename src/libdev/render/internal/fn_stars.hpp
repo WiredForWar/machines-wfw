@@ -20,9 +20,11 @@
 #include "render/render.hpp"
 #include "render/colour.hpp"
 #include "render/internal/colpack.hpp"
+#include "render/internal/vtxdata.hpp"
 #include "render/device.hpp"
 
 #include "ctl/algorith.hpp"
+#include "ctl/vector.hpp"
 
 #include <numeric>
 #include <iterator>

@@ -238,7 +238,7 @@ void W4dCompositeMaterialVecChanger::fillMaterialMaps(
                 entryMaterial.texture((toTexturesVec[idx])[j]);
 
                 // Add the map entry
-                maps[j]->insert(compositeMaterial, entryMaterial);
+                maps[j]->insert({ compositeMaterial, entryMaterial });
             }
         }
 
@@ -259,7 +259,7 @@ void W4dCompositeMaterialVecChanger::fillMaterialMaps(
                     entryMaterial.diffuse(hsvColour.rgb());
 
                     // Add the map entry
-                    maps[j]->insert(compositeMaterial, entryMaterial);
+                    maps[j]->insert({ compositeMaterial, entryMaterial });
                 }
             }
         }
@@ -281,7 +281,7 @@ void W4dCompositeMaterialVecChanger::fillMaterialMaps(
                     entryMaterial.emissive(hsvColourEmissive.rgb());
 
                     // Add the map entry
-                    maps[j]->insert(compositeMaterial, entryMaterial);
+                    maps[j]->insert({ compositeMaterial, entryMaterial });
                 }
             }
         }
