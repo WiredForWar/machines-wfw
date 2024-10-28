@@ -56,12 +56,12 @@ public:
         PhysAbsoluteTime startTime_; // When to start it
         bool isPlaying_ : 1; // true if actively being played
         bool isSelected_ : 1; // used during updateVolumes to denote which ones selected for playing
-        bool idSet_;
-        bool is3D_;
-        MexPoint3d lastPosition_;
+        bool idSet_{};
+        bool is3D_{};
+        MexPoint3d lastPosition_{};
         W4dSoundData* pData_;
 
-        float selectionValue_;
+        float selectionValue_{};
         int priority_;
 
         EntitySound(
@@ -103,19 +103,19 @@ public:
     // data member
     MexPoint3d lastEarLocation_; // Last used ear location
     MexTransform3d lastEarTransform_; // Last used ear location
-    bool hasPendingSound_; // True if a sound has been scheduled to start playing in the future
+    bool hasPendingSound_{}; // True if a sound has been scheduled to start playing in the future
     PhysAbsoluteTime pendingStartTime_; // earliest time at which a new sound scheduled to start.
     EntitySounds sounds_; // All the registered sounds
     SoundIDMap registeredSounds_; // All the registered sound IDs
-    bool definitionFileRead_; // Has the sound definition file been read?
-    MATHEX_SCALAR scaleFactor_; // Sound scaling value
-    bool scalingOn_;
-    SoundDataVector* pAvailableSounds_; // All the available W4dSoundData objects
-    MATHEX_SCALAR maxScaleFactor_;
-    MATHEX_SCALAR minScaleFactor_;
-    bool playSounds_;
-    bool using3DSounds_;
-    Snd::AudioType currentAudioType_;
+    bool definitionFileRead_{}; // Has the sound definition file been read?
+    MATHEX_SCALAR scaleFactor_{}; // Sound scaling value
+    bool scalingOn_{};
+    SoundDataVector* pAvailableSounds_{}; // All the available W4dSoundData objects
+    MATHEX_SCALAR maxScaleFactor_{};
+    MATHEX_SCALAR minScaleFactor_{};
+    bool playSounds_{};
+    bool using3DSounds_{};
+    Snd::AudioType currentAudioType_{};
 };
 
 #endif

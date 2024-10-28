@@ -15,14 +15,12 @@
 #include "sound/sndwavid.hpp"
 #include "sound/soundmix.hpp"
 
+#include <memory>
+
 W4dSoundManagerImpl::W4dSoundManagerImpl()
-    : hasPendingSound_(false)
-    , definitionFileRead_(false)
-    , scalingOn_(false)
-    , scaleFactor_(1.0)
+    : scaleFactor_(1.0)
     , maxScaleFactor_(1)
     , minScaleFactor_(1)
-    , pAvailableSounds_(nullptr)
     , playSounds_(true)
     , currentAudioType_(Snd::THREE_D)
 {
@@ -56,21 +54,18 @@ W4dSoundManagerImpl::EntitySound::EntitySound(
     W4dSoundData* pData)
     : pEntity_(pEntity)
     , maxPercentageVolume_(maxPercentageVolume)
+    , currentPercentageVolume_(currentPercentageVolume)
+    , duration_(duration)
     , nearDistance_(nearDistance)
     , farDistance_(farDistance)
     , sqrDistance_(10000)
-    , currentPercentageVolume_(currentPercentageVolume)
     , pathname_(fileName)
     , repetitions_(repetition)
     , startTime_(startTime)
     , isPlaying_(isPlaying)
     , isSelected_(true)
-    , idSet_(false)
-    , duration_(duration)
     , is3D_(is3D)
     , pData_(pData)
-    , lastPosition_(0, 0, 0)
-    , selectionValue_(0)
 {
     ASSERT(pData, "Invalid SoundData");
     priority_ = pData->priority();
@@ -151,28 +146,28 @@ void W4dSoundManagerImpl::playEntitySound(EntitySound* pThisSound)
     else
         pThisSound->currentPercentageVolume_ = computeVolume(*pThisSound);
 
-    SndWaveformId newId(pThisSound->pathname_.c_str());
-    SndSampleParameters* pTempParams;
+    SndWaveformId newId(pThisSound->pathname_);
+    std::unique_ptr<SndSampleParameters> pTempParams;
     // If playing a durational sound
     if (pThisSound->duration_ > 0)
     {
         if (!pThisSound->is3D_)
         {
-            pTempParams = new SndSampleParameters(
+            pTempParams.reset(new SndSampleParameters(
                 newId,
-                _STATIC_CAST(double, pThisSound->duration_),
-                _STATIC_CAST(Snd::Volume, pThisSound->currentPercentageVolume_));
+                static_cast<double>(pThisSound->duration_),
+                static_cast<Snd::Volume>(pThisSound->currentPercentageVolume_)));
             SOUND_STREAM("Playing 2DDurational sound " << std::endl);
         }
         else
         {
-            pTempParams = new SndSampleParameters(
+            pTempParams.reset(new SndSampleParameters(
                 newId,
                 pThisSound->lastPosition_,
                 pThisSound->duration_,
                 pThisSound->farDistance_,
                 pThisSound->nearDistance_,
-                pThisSound->currentPercentageVolume_);
+                pThisSound->currentPercentageVolume_));
             SOUND_STREAM("Playing 3DDurational sound " << std::endl);
         }
     }
@@ -182,21 +177,21 @@ void W4dSoundManagerImpl::playEntitySound(EntitySound* pThisSound)
         // if this sound is 2D
         if (!pThisSound->is3D_)
         {
-            pTempParams = new SndSampleParameters(
+            pTempParams.reset(new SndSampleParameters(
                 newId,
-                _STATIC_CAST(Snd::LoopCount, pThisSound->repetitions_),
-                _STATIC_CAST(Snd::Volume, pThisSound->currentPercentageVolume_));
+                static_cast<Snd::LoopCount>(pThisSound->repetitions_),
+                static_cast<Snd::Volume>(pThisSound->currentPercentageVolume_)));
             SOUND_STREAM("Playing 2DRepetitional sound " << std::endl);
         }
         else
         {
-            pTempParams = new SndSampleParameters(
+            pTempParams.reset(new SndSampleParameters(
                 newId,
                 pThisSound->lastPosition_,
-                _STATIC_CAST(Snd::LoopCount, pThisSound->repetitions_),
+                static_cast<Snd::LoopCount>(pThisSound->repetitions_),
                 pThisSound->farDistance_,
                 pThisSound->nearDistance_,
-                pThisSound->currentPercentageVolume_);
+                pThisSound->currentPercentageVolume_));
             SOUND_STREAM("Playing 3DRepetitional sound " << std::endl);
         }
     }
@@ -215,6 +210,5 @@ void W4dSoundManagerImpl::playEntitySound(EntitySound* pThisSound)
     {
         SOUND_STREAM("Entity sound out of range" << std::endl);
     }
-    delete pTempParams;
 }
 /* End SOUNDMAI.CPP *************************************************/
