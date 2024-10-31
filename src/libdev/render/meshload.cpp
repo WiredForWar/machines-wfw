@@ -10,8 +10,6 @@
 #include "render/internal/meshload.hpp"
 #include "render/internal/meshid.hpp"
 #include "system/pathname.hpp"
-#include "render/texture.hpp"
-#include "render/texmgr.hpp"
 #include "render/meshinst.hpp"
 #include "render/hierbuil.hpp"
 #include "xin/XFileParser.hpp"
@@ -49,13 +47,8 @@ RenID3DMeshLoader& RenID3DMeshLoader::instance()
 }
 
 RenID3DMeshLoader::RenID3DMeshLoader()
-    : meshesBeingLoaded_(nullptr)
-    , pHierarchyBuilder_(nullptr)
-    , sceneBeingLoaded_(nullptr)
-    , loadMeshes_(false)
 {
     PRE(Ren::initialised());
-    textures_.reserve(64);
 
     TEST_INVARIANT;
 }
@@ -184,27 +177,8 @@ RenID3DMeshLoader::MeshMap* RenID3DMeshLoader::load(const SysPathName& pathName)
         std::cerr << "Could not parse the .x file: " << err.what() << std::endl;
     }
 
-    /*// A cast is required because the declaration of _cdecl in our environment
-    // does not appear to be correct (or something like that).
-    D3DRMLOADTEXTURECALLBACK texCB = (D3DRMLOADTEXTURECALLBACK) loadTextureCB;
-    D3DRMLOADCALLBACK CB = (D3DRMLOADCALLBACK) loadCB;
-
-    // Load all stand alone frames and meshes in the given file.
-    char* fileStr = (char*) pathName.pathname().c_str();
-    ASSERT_INFO( pathName.pathname().c_str() );
-    if (TRYRENDX(d3drm->Load(fileStr, NULL, guids, 4, D3DRMLOAD_FROMFILE,
-            CB, this, texCB, this, NULL)))
-    {
-        //  Only register this file if we were loading the meshes for it. If we
-        //  weren't loading the meshes it's because we have already loaded the
-        //  file and we don't want to register them twice.
-        if( loadMeshes_ )
-        {
-            FileMap::value_type newValue(pathName.pathname(), meshesBeingLoaded_);
-            files_.insert(newValue);
-        }
-    }*/
-
+    // Currently we load textures in RenMesh::buildFromXMesh()
+    // Probably it would be better to incapsulate that stuff here
     return meshesBeingLoaded_;
 }
 
@@ -228,13 +202,6 @@ void RenID3DMeshLoader::deleteAll()
     }
 
     DEBUGFACT(Diag::instance().renderStream() << "map size is now " << files_.size() << std::endl);
-
-    // TBD: This is a crufty fix. destroyRMTextureCB ought to delete the texture,
-    //  but somehow the callback isn't being called.  Maybe there's a leak of an
-    //  RM object which references the texture.  Maybe there's a bug in RM.
-    for (Textures::iterator i = textures_.begin(); i != textures_.end(); ++i)
-        delete *i;
-    textures_.erase(textures_.begin(), textures_.end());
 }
 
 RenID3DMeshLoader::MeshData

@@ -7,9 +7,11 @@
 #define _RENDER_MESHLOAD_HPP
 
 #include "base/base.hpp"
-#include "ctl/map.hpp"
-#include "ctl/pvector.hpp"
 #include "system/pathname.hpp"
+
+#include <map>
+#include <memory>
+#include <vector>
 
 class SysPathName;
 class RenHierarchyBuilder;
@@ -50,8 +52,8 @@ public:
 
     void CLASS_INVARIANT;
 
-    using MeshMap = ctl_map<std::string, MeshData, std::less<std::string>>;
-    using FileMap = ctl_map<std::string, MeshMap*, std::less<std::string>>;
+    using MeshMap = std::map<std::string, MeshData>;
+    using FileMap = std::map<std::string, MeshMap*>;
 
 private:
     RenID3DMeshLoader(); // Singleton
@@ -61,12 +63,12 @@ private:
     // During loading the callback functions need to know which file was
     // loaded when DirectX invoked the callbacks.  This member must be set to
     // point to the MeshMap corresponding to the file which is being loaded.
-    MeshMap* meshesBeingLoaded_;
-    SysPathName fileBeingLoaded_;
-    XFile::Scene* sceneBeingLoaded_;
+    MeshMap* meshesBeingLoaded_{};
+    SysPathName fileBeingLoaded_{};
+    XFile::Scene* sceneBeingLoaded_{};
 
-    RenHierarchyBuilder* pHierarchyBuilder_;
-    bool loadMeshes_;
+    RenHierarchyBuilder* pHierarchyBuilder_{};
+    bool loadMeshes_{};
 
     MeshData searchForMesh(const SysPathName&, const std::string&, const MeshMap*);
     void addMesh(XFile::Mesh*);
@@ -80,10 +82,6 @@ private:
     RenID3DMeshLoader(const RenID3DMeshLoader&);
     RenID3DMeshLoader& operator=(const RenID3DMeshLoader&);
     bool operator==(const RenID3DMeshLoader&);
-
-    using Textures = ctl_pvector<RenTexture>;
-
-    Textures textures_;
 };
 
 #endif
