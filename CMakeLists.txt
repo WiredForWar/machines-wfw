@@ -92,7 +92,7 @@ if(USE_CONAN)
     set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}" ${CMAKE_MODULE_PATH})
     set(CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}" ${CMAKE_PREFIX_PATH})
 
-    set(CMAKE_CXX_STANDARD 14)
+    # set(CMAKE_CXX_STANDARD 14)
 
     include(cmake/conan.cmake)
 
@@ -113,11 +113,11 @@ if(USE_CONAN)
             enet/1.3.17
             freetype/2.11.1
             # swscale:
-            ffmpeg/5.0
+            # ffmpeg/5.0
             ${CONAN_PLATFORM_DEPS}
             # Overrides:
             # libfdk_aac/2.0.1
-            openssl/1.1.1q
+            # openssl/1.1.1q
             libwebp/1.2.3
             zlib/1.2.12
         OPTIONS

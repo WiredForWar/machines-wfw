@@ -318,6 +318,7 @@ void bad_alloc::do_raise()
 
 //////////////////////////////////////////////////////////////////////
 
+#if !defined(MACHINES_COMPILER_MSVC)
 static fvoid_t* terminate_handler = &abort;
 
 fvoid_t* set_terminate(fvoid_t* newh)
@@ -355,5 +356,6 @@ void unexpected()
 
     terminate();
 }
+#endif
 
 /* End EXCEPTIO.CPP *************************************************/

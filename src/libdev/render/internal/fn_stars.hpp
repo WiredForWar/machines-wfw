@@ -74,7 +74,7 @@ void RenIStarsImplReserveVectorsOp(ctl_vector<RenIVertex>& sector)
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplD3DLVERTEXGen : public std::unary_function<void, RenIVertex>
+class RenIStarsImplD3DLVERTEXGen
 {
 public:
     virtual RenIVertex operator()() = 0;
@@ -155,7 +155,7 @@ private:
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplD3DLVERTEXInserterOp : public std::unary_function<const RenIVertex&, void>
+class RenIStarsImplD3DLVERTEXInserterOp
 {
 public:
     RenIStarsImplD3DLVERTEXInserterOp(
@@ -198,19 +198,18 @@ private:
 ////////////////////////////////////////////////////////////
 /* */
 struct RenIStarsImplD3DLVERTEXHeightLesserOrEqualBinPred
-    : public std::binary_function<const RenIVertex, const RenIVertex, bool>
 {
     bool operator()(const RenIVertex& lhs, const RenIVertex& rhs) const { return lhs.z <= rhs.z; }
 };
 
-struct RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred : public std::binary_function<RenIVertex, RenIVertex, bool>
+struct RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred
 {
     bool operator()(const RenIVertex& lhs, const RenIVertex& rhs) const { return lhs.z >= rhs.z; }
 };
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplD3DLVERTEXRandomiseAlphasAuxOp : public std::unary_function<RenIVertex, void>
+class RenIStarsImplD3DLVERTEXRandomiseAlphasAuxOp
 {
 public:
     RenIStarsImplD3DLVERTEXRandomiseAlphasAuxOp(MATHEX_SCALAR lowerBound, MATHEX_SCALAR upperBound)
@@ -241,7 +240,7 @@ private:
     MATHEX_SCALAR upperBound_;
 };
 
-class RenIStarsImplD3DLVERTEXRandomiseAlphasOp : public std::unary_function<ctl_vector<RenIVertex>&, void>
+class RenIStarsImplD3DLVERTEXRandomiseAlphasOp
 {
 public:
     RenIStarsImplD3DLVERTEXRandomiseAlphasOp(MATHEX_SCALAR lowerBound, MATHEX_SCALAR upperBound)
@@ -263,7 +262,7 @@ private:
 
 ////////////////////////////////////////////////////////////
 
-struct RenIStarsImplSortSectorOp : public std::unary_function<ctl_vector<RenIVertex>&, void>
+struct RenIStarsImplSortSectorOp
 {
     void operator()(ctl_vector<RenIVertex>& sector)
     {
@@ -274,7 +273,7 @@ struct RenIStarsImplSortSectorOp : public std::unary_function<ctl_vector<RenIVer
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplVerticesColourAuxOp : public std::unary_function<RenIVertex&, void>
+class RenIStarsImplVerticesColourAuxOp
 {
 public:
     RenIStarsImplVerticesColourAuxOp(uint colour)
@@ -293,7 +292,7 @@ private:
     uint colour_;
 };
 
-class RenIStarsImplVerticesColourOp : public std::unary_function<ctl_vector<RenIVertex>&, void>
+class RenIStarsImplVerticesColourOp
 {
 public:
     RenIStarsImplVerticesColourOp(RenColour colour)
@@ -316,7 +315,7 @@ private:
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplDefineNorthCapOp : public std::unary_function<const ctl_vector<RenIVertex>&, void>
+class RenIStarsImplDefineNorthCapOp
 {
 public:
     RenIStarsImplDefineNorthCapOp(
@@ -347,7 +346,8 @@ public:
         ctl_vector<RenIVertex>::iterator itRim = std::find_if(
             sector.begin(),
             sector.end(),
-            std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), vertex));
+            [](const RenIVertex& lhs) {return lhs.z >= vertex.z;});
+            // std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), vertex));
 
         ASSERT(itRim != sector.end(), "There are no stars in the north cap.");
 
@@ -367,7 +367,7 @@ private:
     ctl_vector<int>* const pSizes_;
 };
 
-class RenIStarsImplDefineSouthCapOp : public std::unary_function<const ctl_vector<RenIVertex>&, void>
+class RenIStarsImplDefineSouthCapOp
 {
 public:
     RenIStarsImplDefineSouthCapOp(
@@ -401,10 +401,11 @@ public:
         vertex.color = 0;
         vertex.specular = 0;
 
-        ctl_vector<RenIVertex>::iterator itRim = find_if(
+        ctl_vector<RenIVertex>::iterator itRim = std::find_if(
             sector.begin(),
             sector.end(),
-            std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), vertex));
+            [](const RenIVertex& lhs) {return lhs.z >= vertex.z;});
+            // std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), vertex));
 
         ASSERT(itRim != sector.end(), "There are no stars in the south cap.");
 
@@ -426,7 +427,7 @@ private:
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplSectorClipBinPred : public std::binary_function<MATHEX_SCALAR, MATHEX_SCALAR, bool>
+class RenIStarsImplSectorClipBinPred
 {
 public:
     RenIStarsImplSectorClipBinPred(MATHEX_SCALAR antiRay, MATHEX_SCALAR clockRay)
@@ -461,7 +462,7 @@ private:
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplPegStarsOp : public std::unary_function<const ctl_vector<RenIVertex>* const, void>
+class RenIStarsImplPegStarsOp
 {
 public:
     RenIStarsImplPegStarsOp(
@@ -491,15 +492,17 @@ public:
         maxVertex.color = 0;
         maxVertex.specular = 0;
 
-        ctl_vector<RenIVertex>::iterator itMin = find_if(
+        ctl_vector<RenIVertex>::iterator itMin = std::find_if(
             pSector->begin(),
             pSector->end(),
-            std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), minVertex));
+            [minVertex](const RenIVertex& lhs) {return lhs.z >= minVertex.z;});
+            //std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), minVertex));
 
-        ctl_vector<RenIVertex>::iterator itMax = find_if(
+        ctl_vector<RenIVertex>::iterator itMax = std::find_if(
             pSector->begin(),
             pSector->end(),
-            std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), maxVertex));
+            [maxVertex](const RenIVertex& lhs) {return lhs.z >= maxVertex.z;});
+            // std::bind2nd(RenIStarsImplD3DLVERTEXHeightGreaterOrEqualBinPred(), maxVertex));
 
         // It is quite possible that at the extremes of elevation there is no vertex
         // that satisfies the max height condition (especially with a lot of sectors).
@@ -534,7 +537,7 @@ private:
 
 ////////////////////////////////////////////////////////////
 
-class RenIStarsImplRenderVerticesOp : public std::unary_function<RenIVertex*, void>
+class RenIStarsImplRenderVerticesOp
 {
 public:
     RenIStarsImplRenderVerticesOp(ctl_vector<int>::iterator itSizes)

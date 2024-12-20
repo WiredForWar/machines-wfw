@@ -33,6 +33,7 @@ add_library(system ${GAME_COMPONENT_LIB_TYPE} ${SYSTEM_SOURCES})
 add_library(LibDev::system ALIAS system)
 
 target_link_libraries(system PUBLIC
+    SDL2::SDL2
     LibDev::recorder
     SDL2::SDL2
 )

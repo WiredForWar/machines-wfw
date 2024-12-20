@@ -48,12 +48,6 @@ private:
 
     // Used for sorting players into most recent use order
     using MachGuiDbPlayer_ptr = MachGuiDbPlayer*;
-    class PlayerNameComparator : public std::binary_function<MachGuiDbPlayer_ptr, MachGuiDbPlayer_ptr, bool>
-    {
-    public:
-        bool operator()(const MachGuiDbPlayer_ptr& pLhs, const MachGuiDbPlayer_ptr& pRhs) const;
-    };
-
     using ElementMap = ctl_map<std::string, MachGuiDbElement*, std::less<std::string>>;
     using Players = ctl_vector<MachGuiDbPlayer*>;
     using Systems = ctl_vector<MachGuiDbSystem*>;

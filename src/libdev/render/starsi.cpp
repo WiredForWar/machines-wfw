@@ -54,11 +54,17 @@ RenIStarsImpl::RenIStarsImpl(RenStars::Configuration config, MATHEX_SCALAR radiu
     // TODO is this renIStarsImplReserveVectorsOp implemented anywhere?
     // ctl_for_each(sectors_, renIStarsImplReserveVectorsOp);
 
-    RenIStarsImplD3DLVERTEXGen* pVertexGen = nullptr;
+    RenIStarsImplSphericalD3DLVERTEXGen sphericalGen(radius_, STAR_COLOUR);
+    RenIStarsImplSphericalD3DLVERTEXGen hemisphericalGen(radius_, STAR_COLOUR);
+
+    std::function<RenIVertex()> vertexGen;
+    // RenIStarsImplD3DLVERTEXGen* pVertexGen = nullptr;
     if (configuration() == RenStars::SPHERICAL)
-        pVertexGen = new RenIStarsImplSphericalD3DLVERTEXGen(radius_, STAR_COLOUR);
+        vertexGen = [&]() {return sphericalGen();};
+        //pVertexGen = new RenIStarsImplSphericalD3DLVERTEXGen(radius_, STAR_COLOUR);
     else if (configuration() == RenStars::HEMISPHERICAL)
-        pVertexGen = new RenIStarsImplHemisphericalD3DLVERTEXGen(radius_, STAR_COLOUR);
+        vertexGen = [&]() {return hemisphericalGen();};
+        // pVertexGen = new RenIStarsImplHemisphericalD3DLVERTEXGen(radius_, STAR_COLOUR);
     else
         ASSERT_FAIL("An invalid stars configuration was found in RenIStarsImpl ctor.");
 
@@ -68,7 +74,7 @@ RenIStarsImpl::RenIStarsImpl(RenStars::Configuration config, MATHEX_SCALAR radiu
 
     // Create a set of random vertices in a particular configuration.
     for (int index = 0; index < nStars; ++index)
-        vertexInserter((*pVertexGen)());
+        vertexInserter(vertexGen());
 
     // Sort the vertices by height. The lowest at sectors_[0].
     ctl_for_each(sectors_, RenIStarsImplSortSectorOp());

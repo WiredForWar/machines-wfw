@@ -76,10 +76,4 @@ void perRead(PerIstream& istr, MachGuiIDatabase& ob)
     ob.pDbCurrentPlayer_ = nullptr;
 }
 
-bool MachGuiIDatabase::PlayerNameComparator::operator()(
-    const MachGuiDbPlayer_ptr& pLhs,
-    const MachGuiDbPlayer_ptr& pRhs) const
-{
-    return pLhs->name() < pRhs->name();
-}
 /* End DATABASI.CPP *************************************************/

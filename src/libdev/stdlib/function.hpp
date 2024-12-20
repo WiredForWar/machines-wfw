@@ -130,7 +130,7 @@ mem_fun_ref( RESULT (T::*m)( ARG ) )
 */
 // =======================================================================
 
-template <class T> class mem_fun_t_void : public std::unary_function<T*, void>
+template <class T> class mem_fun_t_void
 {
 public:
     using pmf = void (T::*)();
@@ -157,8 +157,6 @@ template <class T> mem_fun_t_void<T> mem_fun_void(void (T::*m)())
 // template< class T, class ARG  >
 template <class T, class ARG>
 class mem_fun1_t_void
-    //: public std::binary_function< T *, ARG, RESULT >
-    : public std::binary_function<T*, ARG, bool>
 {
 public:
     using pmf = void (T::*)(ARG);
@@ -182,7 +180,7 @@ template <class T, class ARG> mem_fun1_t_void<T, ARG> mem_fun_void(void (T::*m)(
 
 /* //////////////////////////////////////////////////////////////// */
 
-template <class T> class mem_fun_ref_t_void : public std::unary_function<T&, void>
+template <class T> class mem_fun_ref_t_void
 {
 public:
     using pmf = void (T::*)();
@@ -206,7 +204,7 @@ template <class T> mem_fun_ref_t_void<T> mem_fun_ref_void(void (T::*m)())
 
 /* //////////////////////////////////////////////////////////////// */
 
-template <class T, class ARG> class mem_fun1_ref_t_void : public std::binary_function<T&, ARG, void>
+template <class T, class ARG> class mem_fun1_ref_t_void
 {
 public:
     using pmf = void (T::*)(ARG);
@@ -222,12 +220,6 @@ private:
 };
 
 ///////////////////////////////////
-
-template <class T, class ARG> mem_fun1_ref_t_void<T, ARG> mem_fun_ref_void(void (T::*m)(ARG))
-{
-    // return std::mem_fun1_ref_t< T, ARG >( m );
-    return std::mem_fun1_ref_t<T, ARG, bool>(m);
-}
 
 #endif
 

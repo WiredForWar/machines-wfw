@@ -103,17 +103,17 @@ set(PLANETED_SOURCES
     ${CMAKE_CURRENT_BINARY_DIR}/projects/MachinesVersion.cpp
 )
 
-if(PLATFORM_WINDOWS)
-  set(MACHINES_SOURCES
-      ${MACHINES_SOURCES}
-      # Exe icon and meta info
-      ${PROJECT_SOURCE_DIR}/windows/resource.rc
-  )
-  set(PLANETED_SOURCES
-      ${PLANETED_SOURCES}
-      ${PROJECT_SOURCE_DIR}/windows/planeted.rc
-  )
-endif()
+# if(PLATFORM_WINDOWS)
+#   set(MACHINES_SOURCES
+#       ${MACHINES_SOURCES}
+#       # Exe icon and meta info
+#       ${PROJECT_SOURCE_DIR}/windows/resource.rc
+#   )
+#   set(PLANETED_SOURCES
+#       ${PLANETED_SOURCES}
+#       ${PROJECT_SOURCE_DIR}/windows/planeted.rc
+#   )
+# endif()
 
 # Includes
 set(LOCAL_INCLUDES

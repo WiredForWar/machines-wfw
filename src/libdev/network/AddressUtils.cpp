@@ -17,18 +17,21 @@ std::string_view getIp(const std::string& addressStr)
 
 std::optional<uint16_t> getPort(const std::string& addressStr)
 {
-    auto portDelimiterIt = std::find(addressStr.cbegin(), addressStr.cend(), ':');
+    std::string::const_iterator portDelimiterIt = std::find(addressStr.cbegin(), addressStr.cend(), ':');
     if (portDelimiterIt == addressStr.cend())
         return {};
 
-           // Skip the delimiter
+    // Skip the delimiter
     ++portDelimiterIt;
 
     if (portDelimiterIt == addressStr.cend())
         return {};
 
     uint16_t port{};
-    auto result = std::from_chars(portDelimiterIt.base(), addressStr.cend().base(), port);
+    const char *from = &*portDelimiterIt;
+    const char *to = &*addressStr.cend();
+
+    auto result = std::from_chars(from, to, port);
     if (result.ec != std::errc{})
         return {};
 

@@ -56,8 +56,6 @@
 #include "machlog/mcmotseq.ipp"
 #endif
 
-#pragma GCC diagnostic ignored "-Wunused-variable"
-
 //////////////////////////////////////////////////////////////////////////////////////////
 
 MachLogMachineMotionSequencer::MachLogMachineMotionSequencer(
@@ -4287,5 +4285,4 @@ void MachLogMachineMotionSequencer::writePathPoints() const
     }
 }
 
-#pragma GCC diagnostic pop
 /* End MCMOTSEQ.CPP *************************************************/

@@ -38,11 +38,13 @@
 
 using fvoid_t = void();
 
+#if !defined(MACHINES_COMPILER_MSVC)
 void terminate();
 fvoid_t* set_terminate(fvoid_t*);
 
 void unexpected();
 fvoid_t* set_unexpected(fvoid_t*);
+#endif
 
 //////////////////////////////////////////////////////////////////////
 
