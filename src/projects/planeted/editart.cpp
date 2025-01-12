@@ -54,32 +54,32 @@ void PedArtefactEditor::processInput(const DevButtonEvent& devButtonEvent)
     PedActorEditor::processInput(devButtonEvent);
     if (devButtonEvent.action() == DevButtonEvent::PRESS && active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::KEY_L)
+        if (devButtonEvent.scanCode() == Device::KeyCode::KEY_L)
         {
             processRotation(true);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_K)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_K)
         {
             processRotation(false);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_J && !devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_J && !devButtonEvent.wasShiftPressed())
         {
             processHeightChange(1);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_J && devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_J && devButtonEvent.wasShiftPressed())
         {
             processHeightChange(10);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_N && !devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_N && !devButtonEvent.wasShiftPressed())
         {
             processHeightChange(-1);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_N && devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_N && devButtonEvent.wasShiftPressed())
         {
             processHeightChange(-10);
         }
     }
-    if (devButtonEvent.scanCode() == DevKey::KEY_3 && !devButtonEvent.wasShiftPressed()
+    if (devButtonEvent.scanCode() == Device::KeyCode::KEY_3 && !devButtonEvent.wasShiftPressed()
         && devButtonEvent.wasCtrlPressed())
     {
         processHide(hidden_);

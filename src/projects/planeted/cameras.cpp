@@ -54,42 +54,42 @@ void MachCameras::initialise(W4dSceneManager* pSceneManager, W4dRoot* pRoot)
 
     pKeyTranslator_ = new DevKeyToCommandTranslator();
     pKeyTranslator_->addTranslation(DevKeyToCommand(
-        DevKey::F2,
+        Device::KeyCode::F2,
         ZENITHVIEW,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER));
     pKeyTranslator_->addTranslation(DevKeyToCommand(
-        DevKey::F3,
+        Device::KeyCode::F3,
         SUPERHIGHZENITHVIEW,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER));
     pKeyTranslator_->addTranslation(DevKeyToCommand(
-        DevKey::F1,
+        Device::KeyCode::F1,
         GROUNDVIEW,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER));
     pKeyTranslator_->addTranslation(DevKeyToCommand(
-        DevKey::F4,
+        Device::KeyCode::F4,
         FIRSTPERSONVIEW,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER,
         DevKeyToCommand::EITHER));
-    //  pKeyTranslator_->addTranslation( DevKeyToCommand( DevKey::PAD_3, THIRDPERSONVIEW, DevKeyToCommand::EITHER,
+    //  pKeyTranslator_->addTranslation( DevKeyToCommand( Device::KeyCode::PAD_3, THIRDPERSONVIEW, DevKeyToCommand::EITHER,
     //  DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) ); pKeyTranslator_->addTranslation( DevKeyToCommand(
-    //  DevKey::F5, SAVEVIEW1, DevKeyToCommand::PRESSED, DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) );
-    //  pKeyTranslator_->addTranslation( DevKeyToCommand( DevKey::F6, SAVEVIEW2, DevKeyToCommand::PRESSED,
+    //  Device::KeyCode::F5, SAVEVIEW1, DevKeyToCommand::PRESSED, DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) );
+    //  pKeyTranslator_->addTranslation( DevKeyToCommand( Device::KeyCode::F6, SAVEVIEW2, DevKeyToCommand::PRESSED,
     //  DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) ); pKeyTranslator_->addTranslation( DevKeyToCommand(
-    //  DevKey::F7, SAVEVIEW3, DevKeyToCommand::PRESSED, DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) );
-    //  pKeyTranslator_->addTranslation( DevKeyToCommand( DevKey::F8, SAVEVIEW4, DevKeyToCommand::PRESSED,
+    //  Device::KeyCode::F7, SAVEVIEW3, DevKeyToCommand::PRESSED, DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) );
+    //  pKeyTranslator_->addTranslation( DevKeyToCommand( Device::KeyCode::F8, SAVEVIEW4, DevKeyToCommand::PRESSED,
     //  DevKeyToCommand::EITHER, DevKeyToCommand::EITHER ) ); pKeyTranslator_->addTranslation( DevKeyToCommand(
-    //  DevKey::F5, RESTOREVIEW1, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED ) );
-    //  pKeyTranslator_->addTranslation( DevKeyToCommand( DevKey::F6, RESTOREVIEW2, DevKeyToCommand::RELEASED,
+    //  Device::KeyCode::F5, RESTOREVIEW1, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED ) );
+    //  pKeyTranslator_->addTranslation( DevKeyToCommand( Device::KeyCode::F6, RESTOREVIEW2, DevKeyToCommand::RELEASED,
     //  DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED ) ); pKeyTranslator_->addTranslation( DevKeyToCommand(
-    //  DevKey::F7, RESTOREVIEW3, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED ) );
-    //  pKeyTranslator_->addTranslation( DevKeyToCommand( DevKey::F8, RESTOREVIEW4, DevKeyToCommand::RELEASED,
+    //  Device::KeyCode::F7, RESTOREVIEW3, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED ) );
+    //  pKeyTranslator_->addTranslation( DevKeyToCommand( Device::KeyCode::F8, RESTOREVIEW4, DevKeyToCommand::RELEASED,
     //  DevKeyToCommand::RELEASED, DevKeyToCommand::RELEASED ) );
     pKeyTranslator_->initEventQueue();
 

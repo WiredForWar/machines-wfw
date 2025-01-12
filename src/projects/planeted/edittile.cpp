@@ -80,7 +80,7 @@ void PedTileEditor::processInput(const DevButtonEvent& devButtonEvent)
 {
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::LEFT_MOUSE)
+        if (devButtonEvent.scanCode() == Device::KeyCode::MOUSE_LEFT)
         {
             if (not devButtonEvent.wasCtrlPressed())
             {
@@ -88,39 +88,39 @@ void PedTileEditor::processInput(const DevButtonEvent& devButtonEvent)
             }
             processSelection(devButtonEvent);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_L)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_L)
         {
             processRotation(true);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_K)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_K)
         {
             processRotation(false);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_U)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_U)
         {
             processHeightChange(true, devButtonEvent.wasShiftPressed());
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_D)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_D)
         {
             processHeightChange(false, devButtonEvent.wasShiftPressed());
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_I)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_I)
         {
             processCycleTile(PREV);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_O)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_O)
         {
             processCycleTile(NEXT);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_P)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_P)
         {
             processCycleTile(CURRENT);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_C and not devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_C and not devButtonEvent.wasShiftPressed())
         {
             processAttatchCeilingArtefact(true);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_C and devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_C and devButtonEvent.wasShiftPressed())
         {
             processAttatchCeilingArtefact(false);
         }

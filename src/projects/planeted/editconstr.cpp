@@ -72,16 +72,16 @@ void PedConstructionEditor::processInput(const DevButtonEvent& devButtonEvent)
     PedActorEditor::processInput(devButtonEvent);
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::KEY_L)
+        if (devButtonEvent.scanCode() == Device::KeyCode::KEY_L)
         {
             processRotation(true);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_K)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_K)
         {
             processRotation(false);
         }
     }
-    if (devButtonEvent.scanCode() == DevKey::KEY_1 and not devButtonEvent.wasShiftPressed()
+    if (devButtonEvent.scanCode() == Device::KeyCode::KEY_1 and not devButtonEvent.wasShiftPressed()
         and devButtonEvent.wasCtrlPressed())
     {
         processHide(hidden_);

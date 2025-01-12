@@ -132,26 +132,26 @@ void PedDomainEditor::processInput(const DevButtonEvent& devButtonEvent)
 
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::F6 and devButtonEvent.wasShiftPressed()
+        if (devButtonEvent.scanCode() == Device::KeyCode::F6 and devButtonEvent.wasShiftPressed()
             and not devButtonEvent.wasCtrlPressed() and pSelectedPolygon_)
         {
             pSelectedPolygon_->hide(not pSelectedPolygon_->hidden());
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::F6 and devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::F6 and devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed())
         {
             hidePolygons_ = not hidePolygons_;
             hidePolygons(hidePolygons_);
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_V and not devButtonEvent.wasCtrlPressed() and pHighlightVertex_
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_V and not devButtonEvent.wasCtrlPressed() and pHighlightVertex_
             and pSelectedVertex_)
         {
             processInsertVertex();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_X and not devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_X and not devButtonEvent.wasShiftPressed()
             and not devButtonEvent.wasCtrlPressed() and pSelectedVertex_)
         {
             processDeleteVertex();

@@ -18,6 +18,8 @@
 
 class W4dSceneManager;
 
+using string = std::string;
+
 class wdebug
 // Canonical form revoked
 {

@@ -31,6 +31,8 @@ class MachLogPlanet;
 class MexPoint3d;
 class MexTransform3d;
 
+using string = std::string;
+
 class PedActorEditor : public PedEditorMode
 // Canonical form revoked
 {

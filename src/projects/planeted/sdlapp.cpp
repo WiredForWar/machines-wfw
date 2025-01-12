@@ -653,8 +653,8 @@ void SDLApp::readEnvironment(const string& planetLeafName)
 // virtual
 void SDLApp::checkForQuit(const DevButtonEvent& devButtonEvent)
 {
-    if (devButtonEvent.scanCode() == DevKey::KEY_Q
-        or (devButtonEvent.scanCode() == DevKey::ESCAPE and devButtonEvent.wasShiftPressed()))
+    if (devButtonEvent.scanCode() == Device::KeyCode::KEY_Q
+        or (devButtonEvent.scanCode() == Device::KeyCode::ESCAPE and devButtonEvent.wasShiftPressed()))
     {
         finish();
         PhysConfigSpace2d* pConfigSpace = &pPlanet_->configSpace();

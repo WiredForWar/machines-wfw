@@ -23,11 +23,7 @@
 #include "planeted/scenfile.hpp"
 
 PedCameraEditor::PedCameraEditor()
-    : pRedMarker_(nullptr)
-    , pBlueMarker_(nullptr)
-    , pGreenMarker_(nullptr)
-    , pYellowMarker_(nullptr)
-    , pCurrentMarker_(nullptr)
+    : pMarkers_{nullptr}
     , race_(MachPhys::RED)
 {
 
@@ -40,11 +36,10 @@ void PedCameraEditor::initialise(W4dSceneManager* pScene, MachLogPlanet* pPlanet
     PedEditorMode::initialise(pScene, pPlanet);
 
     // Set all camera markers to be at the current camera position
-    setMarkerToCamera(&pRedMarker_, MachPhys::RED);
-    setMarkerToCamera(&pBlueMarker_, MachPhys::BLUE);
-    setMarkerToCamera(&pGreenMarker_, MachPhys::GREEN);
-    setMarkerToCamera(&pYellowMarker_, MachPhys::YELLOW);
-    pCurrentMarker_ = pRedMarker_;
+    setMarkerToCamera(&pMarkers_[MachPhys::RED], MachPhys::RED);
+    setMarkerToCamera(&pMarkers_[MachPhys::BLUE], MachPhys::BLUE);
+    setMarkerToCamera(&pMarkers_[MachPhys::GREEN], MachPhys::GREEN);
+    setMarkerToCamera(&pMarkers_[MachPhys::YELLOW], MachPhys::YELLOW);
 }
 
 PedCameraEditor::~PedCameraEditor()
@@ -64,14 +59,14 @@ void PedCameraEditor::processInput(const DevButtonEvent& devButtonEvent)
 
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::KEY_D)
+        if (devButtonEvent.scanCode() == Device::KeyCode::KEY_D)
         {
             processDrop();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_C)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_C)
         {
-            pCurrentMarker_ = processChangeRace(pCurrentMarker_);
-            setCameraToMarker(*pCurrentMarker_);
+            processChangeRace();
+            setCameraToMarker(*pMarkers_[race_]);
         }
     }
 }
@@ -117,14 +112,12 @@ void PedCameraEditor::readScnFile(PedScenarioFile& scenarioFile)
     {
         const PedScenarioFile::Camera& scnCamera = scenarioFile.camera(race);
 
-        pCurrentMarker_ = setMarkerForRace(race);
-
         // Only reinitialise position if new position is not the origin
         if (not(scnCamera.transform.position() == origin))
         {
             W4dDomain* pDomain = MachLogPlanetDomains::pDomainAt(scnCamera.transform.position());
 
-            delete pCurrentMarker_;
+            delete pMarkers_[race];
 
             // Calculate local transform from global transform and parent global transform
             MexTransform3d localResultTransform;
@@ -133,8 +126,8 @@ void PedCameraEditor::readScnFile(PedScenarioFile& scenarioFile)
 
             RenColour markerColour = PedRace::colour(race);
             // Create new marker at local transform calculated above
-            pCurrentMarker_ = new PedCameraMarker(pDomain, localResultTransform, scnCamera.type, markerColour);
-            pCurrentMarker_->draw();
+            pMarkers_[race] = new PedCameraMarker(pDomain, localResultTransform, scnCamera.type, markerColour);
+            pMarkers_[race]->draw();
             race = PedRace::next(race);
         }
     }
@@ -143,14 +136,13 @@ void PedCameraEditor::readScnFile(PedScenarioFile& scenarioFile)
 // virtual
 void PedCameraEditor::writeScnFile(PedScenarioFile& scenarioFile)
 {
-    static MachPhys::Race currentRace = MachPhys::RED;
-    static PedCameraMarker* pCurrentMarker = pRedMarker_;
+    MachPhys::Race currentRace = MachPhys::RED;
     for (uint nRace = 0; nRace < PedRace::nRaces(); ++nRace)
     {
+        PedCameraMarker* pCurrentMarker = pMarkers_[currentRace];
         PedScenarioFile::Camera& scnCamera = scenarioFile.camera(currentRace);
         scnCamera.transform = pCurrentMarker->globalTransform();
         scnCamera.type = pCurrentMarker->cameraType();
-        pCurrentMarker = processChangeRace(pCurrentMarker);
         currentRace = PedRace::next(currentRace);
     }
 }
@@ -159,8 +151,7 @@ void PedCameraEditor::writeScnFile(PedScenarioFile& scenarioFile)
 void PedCameraEditor::activateMode()
 {
     PedEditorMode::activateMode();
-    pCurrentMarker_ = setMarkerForRace(race_);
-    setCameraToMarker(*pCurrentMarker_);
+    setCameraToMarker(*pMarkers_[race_]);
 }
 
 std::ostream& operator<<(std::ostream& o, const PedCameraEditor& t)
@@ -174,38 +165,30 @@ std::ostream& operator<<(std::ostream& o, const PedCameraEditor& t)
 
 void PedCameraEditor::processDrop()
 {
-    setMarkerToCamera(&pCurrentMarker_, race_);
+    setMarkerToCamera(&pMarkers_[race_], race_);
 }
 
-PedCameraMarker* PedCameraEditor::processChangeRace(PedCameraMarker* pCurrentMarker)
+void PedCameraEditor::processChangeRace()
 {
     // Set pCurrentMarker to the next race - note race must rotate in the same order
     // as in PedRace::next(...)
-    PedCameraMarker* pTempMarker;
 
-    if (pCurrentMarker == pRedMarker_)
+    switch(race_)
     {
-        pTempMarker = pBlueMarker_;
-        race_ = MachPhys::BLUE;
+        case MachPhys::RED:
+            race_ = MachPhys::BLUE;
+            break;
+        case MachPhys::BLUE:
+            race_ = MachPhys::GREEN;
+            break;
+        case MachPhys::GREEN:
+            race_ = MachPhys::YELLOW;
+            break;
+        case MachPhys::YELLOW:
+            race_ = MachPhys::RED;
+            break;
     }
-    else if (pCurrentMarker == pBlueMarker_)
-    {
-        pTempMarker = pGreenMarker_;
-        race_ = MachPhys::GREEN;
-    }
-    else if (pCurrentMarker == pGreenMarker_)
-    {
-        pTempMarker = pYellowMarker_;
-        race_ = MachPhys::YELLOW;
-    }
-    else if (pCurrentMarker == pYellowMarker_)
-    {
-        pTempMarker = pRedMarker_;
-        race_ = MachPhys::RED;
-    }
-    POST(pTempMarker != nullptr);
-
-    return pTempMarker; // ok to do this as it is assigned to point to a valid member marker
+    return; // ok to do this as it is assigned to point to a valid member marker
 }
 
 void PedCameraEditor::setCameraToMarker(const PedCameraMarker& marker)
@@ -267,27 +250,6 @@ void PedCameraEditor::setMarkerToCamera(PedCameraMarker** ppCameraMarker, MachPh
         string msg("Warning : cannot set marker in current camera mode ");
         warnings_.push_back(msg);
     }
-}
-
-PedCameraMarker* PedCameraEditor::setMarkerForRace(MachPhys::Race race)
-{
-    PedCameraMarker* pMarker = pRedMarker_;
-    switch (race)
-    {
-        case (MachPhys::RED):
-            pMarker = pRedMarker_;
-            break;
-        case (MachPhys::BLUE):
-            pMarker = pBlueMarker_;
-            break;
-        case (MachPhys::GREEN):
-            pMarker = pGreenMarker_;
-            break;
-        case (MachPhys::YELLOW):
-            pMarker = pYellowMarker_;
-            break;
-    }
-    return pMarker;
 }
 
 /* End EDITCAMR.CPP *************************************************/

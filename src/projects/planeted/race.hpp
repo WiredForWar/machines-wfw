@@ -14,6 +14,8 @@
 #include "render/colour.hpp"
 // #include <strfwd.hpp>
 
+using string = std::string;
+
 struct PedRace
 {
     static MachPhys::Race parse(const string& raceString);
