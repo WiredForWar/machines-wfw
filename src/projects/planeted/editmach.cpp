@@ -65,7 +65,7 @@ void PedMachineEditor::CLASS_INVARIANT
 void PedMachineEditor::processInput(const DevButtonEvent& devButtonEvent)
 {
     PedActorEditor::processInput(devButtonEvent);
-    if (devButtonEvent.scanCode() == DevKey::KEY_2 and not devButtonEvent.wasShiftPressed()
+    if (devButtonEvent.scanCode() == Device::KeyCode::KEY_2 and not devButtonEvent.wasShiftPressed()
         and devButtonEvent.wasCtrlPressed())
     {
         processHide(hidden_);
@@ -114,6 +114,7 @@ void PedMachineEditor::readScnFile(PedScenarioFile& scenarioFile)
                 break;
             }
         }
+        if (machDataIter_ == machineData_.end()) continue;
         // Set current race in order to create construction of the correct race
         race_ = (*scnMachIter).race;
         // Create new machine ( using machDataIter_ ) and new mapping

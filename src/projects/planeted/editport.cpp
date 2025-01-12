@@ -109,18 +109,18 @@ void PedPortalEditor::processInput(const DevButtonEvent& devButtonEvent)
 
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::KEY_P)
+        if (devButtonEvent.scanCode() == Device::KeyCode::KEY_P)
         {
             processCreatePortalsFromDomains();
         }
-        if (devButtonEvent.scanCode() == DevKey::F8 and devButtonEvent.wasShiftPressed()
+        if (devButtonEvent.scanCode() == Device::KeyCode::F8 and devButtonEvent.wasShiftPressed()
             and not devButtonEvent.wasCtrlPressed() and pSelectedPolygon_)
         {
             pSelectedPolygon_->hide(not pSelectedPolygon_->hidden());
         }
     }
 
-    if (devButtonEvent.action() == DevButtonEvent::PRESS and devButtonEvent.scanCode() == DevKey::F8
+    if (devButtonEvent.action() == DevButtonEvent::PRESS and devButtonEvent.scanCode() == Device::KeyCode::F8
         and devButtonEvent.wasCtrlPressed() and not devButtonEvent.wasShiftPressed())
     {
         hidePolygons_ = not hidePolygons_;

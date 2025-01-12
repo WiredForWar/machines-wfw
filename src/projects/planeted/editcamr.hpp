@@ -63,21 +63,15 @@ private:
 
     void processDrop();
 
-    PedCameraMarker* processChangeRace(PedCameraMarker*);
+    void processChangeRace();
 
     void setCameraToMarker(const PedCameraMarker&);
 
     void setMarkerToCamera(PedCameraMarker**, MachPhys::Race);
 
-    PedCameraMarker* setMarkerForRace(MachPhys::Race);
 
     // Data
-
-    PedCameraMarker* pRedMarker_;
-    PedCameraMarker* pBlueMarker_;
-    PedCameraMarker* pGreenMarker_;
-    PedCameraMarker* pYellowMarker_;
-    PedCameraMarker* pCurrentMarker_;
+    PedCameraMarker* pMarkers_[MachPhys::Race::N_RACES];
     MachPhys::Race race_;
 };
 

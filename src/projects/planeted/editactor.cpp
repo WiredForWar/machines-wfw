@@ -59,39 +59,39 @@ void PedActorEditor::processInput(const DevButtonEvent& devButtonEvent)
 
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::KEY_D and pVertexMarker_)
+        if (devButtonEvent.scanCode() == Device::KeyCode::KEY_D and pVertexMarker_)
         {
             processDrop();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_I)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_I)
         {
             processCycle(PREV);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_O)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_O)
         {
             processCycle(NEXT);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_C)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_C)
         {
             processRace();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_Y)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_Y)
         {
             processMove(UP);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_B)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_B)
         {
             processMove(DOWN);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_H)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_H)
         {
             processMove(RIGHT);
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_G)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_G)
         {
             processMove(LEFT);
         }
-        else if (devButtonEvent.scanCode() == DevKey::LEFT_MOUSE and pVertexMarker_)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::MOUSE_LEFT and pVertexMarker_)
         {
             processSelection();
             /*   if( not alreadySelected_ )
@@ -105,12 +105,12 @@ void PedActorEditor::processInput(const DevButtonEvent& devButtonEvent)
                 mouseDrag_ = true;
             } */
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_X and devButtonEvent.wasShiftPressed())
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_X and devButtonEvent.wasShiftPressed())
         {
             processDelete();
         }
     }
-    if (devButtonEvent.action() == DevButtonEvent::RELEASE and devButtonEvent.scanCode() == DevKey::LEFT_MOUSE)
+    if (devButtonEvent.action() == DevButtonEvent::RELEASE and devButtonEvent.scanCode() == Device::KeyCode::MOUSE_LEFT)
     {
         processReleaseSelection();
     }

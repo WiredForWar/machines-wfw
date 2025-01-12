@@ -55,24 +55,24 @@ void PedPolygonEditor::processInput(const DevButtonEvent& devButtonEvent)
 {
     if (devButtonEvent.action() == DevButtonEvent::PRESS and active_)
     {
-        if (devButtonEvent.scanCode() == DevKey::LEFT_MOUSE and pHighlightVertex_ and not mouseDrag_)
+        if (devButtonEvent.scanCode() == Device::KeyCode::MOUSE_LEFT and pHighlightVertex_ and not mouseDrag_)
         {
             processSelectPolygon();
         }
 
-        else if (devButtonEvent.scanCode() == DevKey::KEY_D and pHighlightVertex_)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_D and pHighlightVertex_)
         {
             processDropPolygon();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_X and devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_X and devButtonEvent.wasShiftPressed()
             and not devButtonEvent.wasCtrlPressed() and pSelectedPolygon_)
         {
             // Delete polygon
             processDeletePolygon();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_X and not devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_X and not devButtonEvent.wasShiftPressed()
             and devButtonEvent.wasCtrlPressed() and pSelectedPolygon_)
         {
             // Cut polygon
@@ -81,49 +81,49 @@ void PedPolygonEditor::processInput(const DevButtonEvent& devButtonEvent)
         }
 
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_I and devButtonEvent.wasShiftPressed() and not polygons_.empty())
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_I and devButtonEvent.wasShiftPressed() and not polygons_.empty())
         {
             processPrevPolygon();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_I and not devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_I and not devButtonEvent.wasShiftPressed()
             and not polygons_.empty())
         {
             processPrevVertex();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_O and not devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_O and not devButtonEvent.wasShiftPressed()
             and not polygons_.empty())
         {
             processNextVertex();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_O and devButtonEvent.wasShiftPressed() and not polygons_.empty())
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_O and devButtonEvent.wasShiftPressed() and not polygons_.empty())
         {
             processNextPolygon();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_H)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_H)
         {
             if (devButtonEvent.wasShiftPressed())
                 processPolygonRight();
             else
                 processVertexRight();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_G)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_G)
         {
             if (devButtonEvent.wasShiftPressed())
                 processPolygonLeft();
             else
                 processVertexLeft();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_Y)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_Y)
         {
             if (devButtonEvent.wasShiftPressed())
                 processPolygonUp();
             else
                 processVertexUp();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_B)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_B)
         {
             if (devButtonEvent.wasShiftPressed())
                 processPolygonDown();
@@ -131,29 +131,29 @@ void PedPolygonEditor::processInput(const DevButtonEvent& devButtonEvent)
                 processVertexDown();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_V and not devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_V and not devButtonEvent.wasShiftPressed()
             and devButtonEvent.wasCtrlPressed())
         {
             processPaste(true);
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_C and not devButtonEvent.wasShiftPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_C and not devButtonEvent.wasShiftPressed()
             and devButtonEvent.wasCtrlPressed() and pSelectedPolygon_)
         {
             copyVerticies_ = pSelectedPolygon_->verticies();
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_F)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_F)
         {
             processFlattenPolygons();
         }
     }
 
-    if (devButtonEvent.action() == DevButtonEvent::RELEASE and devButtonEvent.scanCode() == DevKey::LEFT_MOUSE)
+    if (devButtonEvent.action() == DevButtonEvent::RELEASE and devButtonEvent.scanCode() == Device::KeyCode::MOUSE_LEFT)
     {
         mouseDrag_ = false;
     }
 
-    if (devButtonEvent.action() == DevButtonEvent::RELEASE and devButtonEvent.scanCode() == DevKey::KEY_V
+    if (devButtonEvent.action() == DevButtonEvent::RELEASE and devButtonEvent.scanCode() == Device::KeyCode::KEY_V
         and pPastePolygon_ and active_)
     {
         processPaste(false);

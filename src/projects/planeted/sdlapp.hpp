@@ -21,6 +21,8 @@ class MexPoint2d;
 class MexPoint3d;
 class EnvPlanetEnvironment;
 
+using string = std::string;
+
 // This class represents an application based on Direct3D.  When we know
 // what's common to all D3D apps, this probably ought to become an abstract
 // base class.  It's based on the application framework, so there's no main,

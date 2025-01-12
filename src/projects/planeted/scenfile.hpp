@@ -35,6 +35,7 @@ public:
 
     void CLASS_INVARIANT;
 
+    using string = std::string;
     using RaceAI = string;
     using MineralSite = string;
     using Miscellanious = string;

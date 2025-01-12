@@ -26,6 +26,8 @@ class SysPathName;
 class MexPoint2d;
 class PedScenarioFile;
 
+using string = std::string;
+
 class PedEditorMode
 // Canonical form revoked
 {

@@ -276,49 +276,49 @@ void PedPlanetEditor::readArfFile(const SysPathName& arfFileName)
 void PedPlanetEditor::initDeviceEvents()
 {
     // Setup event queue to respond to certain key pressed
-    DevEventQueue::instance().queueEvents(DevKey::LEFT_MOUSE, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::LEFT_MOUSE, DevButtonEvent::RELEASE);
-    DevEventQueue::instance().queueEvents(DevKey::ESCAPE, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F1, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F2, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F4, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F5, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F6, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F7, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F8, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F9, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F10, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F11, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::F12, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_B, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_C, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_D, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_E, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_F, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_G, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_H, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_I, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_J, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_K, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_L, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_N, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_O, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_P, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_Q, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_R, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_S, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_U, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_V, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_V, DevButtonEvent::RELEASE);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_W, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_X, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_Y, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_1, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_2, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_3, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::KEY_4, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::HOME, DevButtonEvent::PRESS);
-    DevEventQueue::instance().queueEvents(DevKey::END, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::MOUSE_LEFT, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::MOUSE_LEFT, DevButtonEvent::RELEASE);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::ESCAPE, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F1, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F2, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F4, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F5, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F6, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F7, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F8, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F9, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F10, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F11, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::F12, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_B, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_C, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_D, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_E, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_F, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_G, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_H, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_I, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_J, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_K, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_L, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_N, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_O, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_P, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_Q, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_R, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_S, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_U, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_V, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_V, DevButtonEvent::RELEASE);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_W, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_X, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_Y, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_1, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_2, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_3, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::KEY_4, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::HOME, DevButtonEvent::PRESS);
+    DevEventQueue::instance().queueEvents(Device::KeyCode::END, DevButtonEvent::PRESS);
 }
 
 void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
@@ -331,7 +331,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
     if (devButtonEvent.action() == DevButtonEvent::PRESS)
     {
         // Check for mode change first...
-        if (devButtonEvent.scanCode() == DevKey::F5 and not devButtonEvent.wasCtrlPressed()
+        if (devButtonEvent.scanCode() == Device::KeyCode::F5 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pTileMode_)
         {
             pCurrentMode_->changingMode();
@@ -339,7 +339,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::F6 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::F6 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pDomainMode_)
         {
             pCurrentMode_->changingMode();
@@ -347,7 +347,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::F7 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::F7 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pObstacleMode_)
         {
             pCurrentMode_->changingMode();
@@ -355,7 +355,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::F8 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::F8 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pPortalMode_)
         {
             pCurrentMode_->changingMode();
@@ -363,7 +363,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_1 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_1 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pConstructionMode_)
         {
             pCurrentMode_->changingMode();
@@ -371,7 +371,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_2 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_2 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pMachineMode_)
         {
             pCurrentMode_->changingMode();
@@ -379,7 +379,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_3 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_3 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pArtefactMode_)
         {
             pCurrentMode_->changingMode();
@@ -387,7 +387,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
         else if (
-            devButtonEvent.scanCode() == DevKey::KEY_4 and not devButtonEvent.wasCtrlPressed()
+            devButtonEvent.scanCode() == Device::KeyCode::KEY_4 and not devButtonEvent.wasCtrlPressed()
             and not devButtonEvent.wasShiftPressed() and pCurrentMode_ != pCameraMode_)
         {
             pCurrentMode_->changingMode();
@@ -395,16 +395,16 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             pCurrentMode_->activateMode();
         }
 
-        else if (devButtonEvent.scanCode() == DevKey::F10)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::F10)
         {
             dispKeyboardControls_ = not dispKeyboardControls_;
         }
-        else if (devButtonEvent.scanCode() == DevKey::KEY_S)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::KEY_S)
         {
             if (devButtonEvent.wasCtrlPressed())
                 processSave();
         }
-        else if (devButtonEvent.scanCode() == DevKey::F9)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::F9)
         {
             //          pTileMode_->validate();
             //          pDomainMode_->validate();
@@ -412,7 +412,7 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
             //          pPortalMode_->validate();
             dispWarnings_ = not dispWarnings_;
         }
-        else if (devButtonEvent.scanCode() == DevKey::F11)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::F11)
         {
             // Create map bitmap
             PedMapCreator mapCreator(
@@ -421,12 +421,12 @@ void PedPlanetEditor::processInput(const DevButtonEvent& devButtonEvent)
                 *_REINTERPRET_CAST(PedPolygonEditor*, pObstacleMode_));
             mapCreator.createBmp();
         }
-        else if (devButtonEvent.scanCode() == DevKey::HOME)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::HOME)
         {
             if (not ProProfiler::instance().isProfilingEnabled())
                 ProProfiler::instance().enableProfiling();
         }
-        else if (devButtonEvent.scanCode() == DevKey::END)
+        else if (devButtonEvent.scanCode() == Device::KeyCode::END)
         {
             if (ProProfiler::instance().isProfilingEnabled())
                 ProProfiler::instance().disableProfiling();
