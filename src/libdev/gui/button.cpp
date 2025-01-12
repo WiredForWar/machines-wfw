@@ -62,6 +62,10 @@ void GuiButton::doHandleMouseClickEvent(const GuiMouseEvent& e)
     {
         if (e.leftButton() == Gui::RELEASED)
         {
+            if (clickedCallback_)
+            {
+                clickedCallback_(this);
+            }
             // Only interested in release event if we are a popupButton,
             // stay-pressed buttons are sent release event when they are pressed
             // a second time.
@@ -76,10 +80,6 @@ void GuiButton::doHandleMouseClickEvent(const GuiMouseEvent& e)
                 }
             }
 
-            if (clickedCallback_)
-            {
-                clickedCallback_(this);
-            }
         }
         else if (e.leftButton() == Gui::PRESSED)
         {

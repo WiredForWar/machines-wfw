@@ -56,13 +56,13 @@ void GuiSingleSelectionListBox::notifyListItemSelection(GuiSingleSelectionListBo
 
         pCurrentSelection_ = pNewSelection;
 
-        pCurrentSelection_->setSelected(true);
-        pCurrentSelection_->select();
-
         if (selectionChangedCallback_)
         {
             selectionChangedCallback_(this);
         }
+        pCurrentSelection_->setSelected(true);
+        pCurrentSelection_->select();
+        // Warn: 'this' may be deleted by itself
     }
 }
 
