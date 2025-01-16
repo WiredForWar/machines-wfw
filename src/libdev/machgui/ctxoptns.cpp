@@ -573,10 +573,8 @@ void MachGuiCtxOptions::buttonEvent(MachGui::ButtonEvent buttonEvent)
         {
             pGammaCorrection_->setValue(gammaCorrection_);
         }
-        pStartupScreens_->buttonAction(MachGui::ButtonEvent::EXIT);
 
-        const bool grabCursorEnabled = SysRegistry::instance().queryBooleanValue(c_GrabCursorOptionKey, "on", true);
-        pGrabMouse_->setChecked(grabCursorEnabled);
+        pStartupScreens_->buttonAction(MachGui::ButtonEvent::EXIT);
     }
 }
 
