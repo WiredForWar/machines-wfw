@@ -63,7 +63,7 @@ private:
     int inGameResolutionWidth_;
     int inGameResolutionHeight_;
     int inGameResolutionRate_;
-    bool isGamePaused_;
+    bool isGamePaused_{};
     FocusCapableControls focusCapableControls_;
     MachGuiDispositionChangeNotifiable* pDispositionNotifiable_;
     bool ignoreHostLostSystemMessage_;
