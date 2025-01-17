@@ -15,10 +15,10 @@ public:
     void setLimits(double lower, double upper);
 
 private:
-    double lowerLimit_ = 0;
-    double upperLimit_ = 0;
-    size_t lastDone_;
-    Gui::Box area_;
+    double lowerLimit_{};
+    double upperLimit_{};
+    std::size_t lastDone_{};
+    Gui::Box area_{};
     Gui::Colour color_ {};
 };
 

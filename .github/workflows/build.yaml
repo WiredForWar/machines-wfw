@@ -109,6 +109,7 @@ jobs:
           -GNinja
           -DCMAKE_BUILD_TYPE=${{ matrix.build-type }}
           -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/install/machines
+          -DBUILD_PLANETED=TRUE
           ${cmake_toolchain_args}
           ${cmake_release_args}
           RESULT_VARIABLE CONF_RESULT
@@ -129,6 +130,10 @@ jobs:
     - name: Install
       if: matrix.package
       run: cmake --build ${{github.workspace}}/build --config ${{ matrix.build-type }} --target install
+
+    - name: Remove the editor from the distribution
+      if: matrix.package
+      run: cmake -E remove ${{github.workspace}}/install/machines/planeted.exe
 
     - name: Add the data pack
       if: matrix.package
